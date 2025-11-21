@@ -1,0 +1,522 @@
+# Vision Vault - Directing Department Module Configuration
+
+department:
+  code: "DIR"
+  name: "Directing"
+  full_name: "Director and Creative Leadership"
+  description: "Overall creative vision, storytelling, and artistic leadership of the production"
+
+key_personnel:
+  - role: "Director"
+    responsibilities:
+      - "Primary creative vision and storytelling"
+      - "Performance direction and blocking"
+      - "Collaboration with all departments on artistic choices"
+      - "Final creative decisions on all aspects"
+      - "Leading the production's artistic direction"
+
+  - role: "Script Supervisor"
+    responsibilities:
+      - "Continuity tracking (dialogue, actions, props, costumes)"
+      - "Shot coverage notes"
+      - "Timing scenes"
+      - "Liaison between director and editor"
+      - "Detailed production notes"
+
+  - role: "Storyboard Artist"
+    responsibilities:
+      - "Visualizing director's shot plans"
+      - "Creating visual reference for complex sequences"
+      - "Collaborating on visual storytelling"
+
+knowledge_foundation:
+  story_and_narrative:
+    core_concepts:
+      - concept: "Story Structure"
+        frameworks:
+          - "Three-act structure (Setup, Confrontation, Resolution)"
+          - "Hero's Journey (Joseph Campbell)"
+          - "Save the Cat beat sheet"
+          - "Five-act structure (for television)"
+        key_questions:
+          - "What is the central dramatic conflict?"
+          - "How does conflict escalate through the story?"
+          - "What are the major turning points?"
+          - "How do we structure reveals and reversals?"
+
+      - concept: "Theme and Message"
+        key_elements:
+          - "Central themes and sub-themes"
+          - "Thematic through-line"
+          - "Message vs didacticism"
+          - "Universal vs specific themes"
+        key_questions:
+          - "What are we really saying?"
+          - "How do themes manifest in character and plot?"
+          - "What should audiences take away?"
+
+      - concept: "Character Development"
+        frameworks:
+          - "Character arc (transformation journey)"
+          - "Want vs Need (external vs internal goals)"
+          - "Fatal flaw and strengths"
+          - "Backstory and motivation"
+          - "Relationships and dynamics"
+        key_questions:
+          - "Who is this character at the start vs end?"
+          - "What do they want vs what do they need?"
+          - "What drives their decisions?"
+          - "How do they relate to other characters?"
+
+      - concept: "Genre and Tone"
+        considerations:
+          - "Genre conventions and audience expectations"
+          - "Subverting vs honoring genre"
+          - "Tonal consistency throughout"
+          - "Genre blending challenges"
+        key_questions:
+          - "What genre are we working in?"
+          - "How do we meet/subvert expectations?"
+          - "What's the emotional tone?"
+          - "How do we maintain tonal consistency?"
+
+  visual_storytelling:
+    core_principles:
+      - principle: "Show Don't Tell"
+        techniques:
+          - "Visual metaphor and symbolism"
+          - "Action revealing character"
+          - "Environmental storytelling"
+          - "Subtext through blocking and framing"
+
+      - principle: "Camera as Narrator"
+        perspectives:
+          - "Objective (observer)"
+          - "Subjective (character POV)"
+          - "Semi-subjective (over-shoulder, aligned)"
+        emotional_impact:
+          - "Low angles (power, heroism)"
+          - "High angles (vulnerability, defeat)"
+          - "Eye-level (equality, neutrality)"
+          - "Dutch angle (unease, chaos)"
+
+      - principle: "Composition and Framing"
+        storytelling_uses:
+          - "Isolation in frame (loneliness)"
+          - "Spatial relationships (power dynamics)"
+          - "Depth layers (relationship complexity)"
+          - "Symmetry (formality, perfection)"
+          - "Asymmetry (tension, informality)"
+
+      - principle: "Movement and Rhythm"
+        creative_choices:
+          - "Static vs moving camera"
+          - "Character movement vs camera movement"
+          - "Pacing through shot selection"
+          - "Visual rhythm supporting editorial rhythm"
+
+  performance_direction:
+    actor_collaboration:
+      - element: "Character Preparation"
+        director_responsibilities:
+          - "Providing character backstory and context"
+          - "Discussing character journey and arc"
+          - "Sharing references and inspiration"
+          - "Establishing character relationships"
+
+      - element: "Rehearsal Process"
+        approaches:
+          - "Table reads (hearing script, chemistry building)"
+          - "Blocking rehearsals (movement and staging)"
+          - "Emotional exploration (accessing character depths)"
+          - "Improvisation (discovering authentic moments)"
+
+      - element: "On-Set Direction"
+        techniques:
+          - "Providing clear objectives for each scene"
+          - "Offering specific, actionable notes"
+          - "Creating safe space for risk-taking"
+          - "Knowing when to push and when to support"
+          - "Reading and responding to actor needs"
+
+      - element: "Performance Nuance"
+        considerations:
+          - "Subtlety vs intensity"
+          - "Internal vs external acting"
+          - "Continuity of performance across takes"
+          - "Emotional truth vs technical precision"
+
+  technical_mastery:
+    camera_and_coverage:
+      - skill: "Shot Design"
+        knowledge:
+          - "Understanding lens choice impact"
+          - "Camera angle emotional meaning"
+          - "Movement motivations"
+          - "Composition principles"
+
+      - skill: "Coverage Planning"
+        knowledge:
+          - "Master shot strategy"
+          - "Close-up priorities"
+          - "Cutaway and insert needs"
+          - "Editorial flexibility"
+          - "Shooting ratio considerations"
+
+    sound_considerations:
+      - "Dialogue clarity and performance"
+      - "Ambient sound and atmosphere"
+      - "Sound design opportunities"
+      - "Music and score planning"
+
+    collaboration:
+      - "Understanding all departments' workflows"
+      - "Effective communication across specialties"
+      - "Respecting expertise while maintaining vision"
+      - "Problem-solving with creative partners"
+
+  thematic_depth:
+    developing_layers:
+      - "Visual motifs reinforcing themes"
+      - "Symbolic elements throughout"
+      - "Character actions reflecting themes"
+      - "Setting and production design supporting themes"
+      - "Sound and music enhancing thematic resonance"
+
+    maintaining_consistency:
+      - "Thematic through-line across all elements"
+      - "Ensuring creative choices align with themes"
+      - "Balancing subtlety and clarity"
+      - "Avoiding heavy-handedness"
+
+  audience_engagement:
+    emotional_journey:
+      - "Building and releasing tension"
+      - "Crafting memorable moments"
+      - "Pacing for audience experience"
+      - "Leaving room for interpretation"
+
+    commercial_awareness:
+      - "Target audience considerations"
+      - "Genre expectations"
+      - "Marketability balance with artistic vision"
+      - "Cultural relevance and resonance"
+
+workflow:
+  development:
+    script_development:
+      - "Initial concept development"
+      - "Collaborating with writer on story"
+      - "Multiple script revisions"
+      - "Script breakdown for visual opportunities"
+      - "Identifying themes and emotional beats"
+
+    visual_preparation:
+      - "Research and reference gathering"
+      - "Mood boards and lookbooks"
+      - "Location research"
+      - "Casting vision development"
+
+    packaging:
+      - "Attaching key talent (actors, DP, etc.)"
+      - "Pitching to producers/studios"
+      - "Creative collaboration on project vision"
+
+  pre_production:
+    script_finalization:
+      - "Final script polish"
+      - "Scene-by-scene breakdown"
+      - "Identifying key moments"
+      - "Shot list creation (with DP)"
+
+    casting:
+      - "Character breakdown creation"
+      - "Audition process"
+      - "Chemistry reads"
+      - "Final casting decisions"
+      - "Contract negotiations (with producers)"
+
+    visual_development:
+      - "Storyboarding key sequences"
+      - "Shot list refinement with DP"
+      - "Lookbook finalization"
+      - "Location scouts and selection"
+      - "Production design collaboration"
+
+    rehearsals:
+      - "Table reads with full cast"
+      - "Blocking rehearsals"
+      - "Character development sessions"
+      - "Building ensemble chemistry"
+
+    technical_preparation:
+      - "Camera tests with DP"
+      - "Lighting tests"
+      - "Costume and makeup tests"
+      - "Special effects planning"
+      - "Stunt choreography (if applicable)"
+
+    production_meetings:
+      - "Department head meetings"
+      - "Technical scouts"
+      - "Production schedule review"
+      - "Problem anticipation and solving"
+
+  production:
+    daily_workflow:
+      preparation:
+        - "Review call sheet and schedule"
+        - "Prepare for day's scenes"
+        - "Brief department heads"
+
+      on_set:
+        - "Blocking scenes with actors"
+        - "Collaborating with DP on shot design"
+        - "Directing performances"
+        - "Making coverage decisions"
+        - "Reviewing playback"
+        - "Making adjustments between takes"
+        - "Maintaining schedule awareness"
+        - "Solving problems creatively"
+
+      wrap:
+        - "Review day's footage (dailies)"
+        - "Notes for next day"
+        - "Communication with editors"
+
+    performance_direction:
+      - "Providing clear objectives"
+      - "Giving specific, actionable notes"
+      - "Protecting actors' process"
+      - "Maintaining performance continuity"
+      - "Knowing when enough is enough"
+
+    collaboration:
+      - "Constant communication with DP"
+      - "Working with 1st AD on schedule"
+      - "Department head check-ins"
+      - "Problem-solving with UPM/producers"
+
+  post_production:
+    editorial:
+      - "Reviewing dailies"
+      - "Attending assembly screenings"
+      - "Director's cut creation"
+      - "Collaborating with editor on pacing, rhythm, story"
+      - "Making difficult cut decisions"
+      - "Responding to producer/studio notes"
+      - "Achieving picture lock"
+
+    sound:
+      - "Spotting session for music"
+      - "Sound design collaboration"
+      - "ADR direction (re-recording dialogue)"
+      - "Sound mix attendance and notes"
+
+    visual_finishing:
+      - "Color grading/DI sessions"
+      - "VFX review and notes"
+      - "Title design approval"
+      - "Final deliverable review"
+
+    screenings:
+      - "Test screenings (if applicable)"
+      - "Incorporating audience feedback"
+      - "Final tweaks and adjustments"
+
+  marketing_and_distribution:
+    participation:
+      - "Trailer approval"
+      - "Marketing campaign input"
+      - "Press junkets and interviews"
+      - "Film festival Q&As"
+      - "Awards campaign (if applicable)"
+
+collaboration_matrix:
+  primary_collaborators:
+    - department: "Cinematography"
+      interaction: "Constant - visual storytelling partnership"
+      key_touchpoints:
+        - "Shot design and coverage"
+        - "Visual style and lookbook"
+        - "Blocking and staging"
+        - "Location scouts"
+        - "Dailies review"
+
+    - department: "Editing"
+      interaction: "Constant during post, periodic during production"
+      key_touchpoints:
+        - "Coverage needs"
+        - "Rough cut reviews"
+        - "Director's cut creation"
+        - "Pacing and rhythm decisions"
+        - "Final cut approval"
+
+    - department: "Production Design"
+      interaction: "Very frequent - unified visual world"
+      key_touchpoints:
+        - "Visual style alignment"
+        - "Set design for blocking and camera"
+        - "Color palette coordination"
+        - "Period/world accuracy"
+
+    - department: "Producing"
+      interaction: "Constant - creative and practical partnership"
+      key_touchpoints:
+        - "Script development"
+        - "Casting decisions"
+        - "Budget and schedule"
+        - "Problem solving"
+        - "Final creative decisions"
+
+    - department: "Writing"
+      interaction: "Frequent during development, periodic during production"
+      key_touchpoints:
+        - "Script revisions"
+        - "Maintaining writer's vision while directing"
+        - "On-set script changes"
+
+  secondary_collaborators:
+    - department: "All Departments"
+      interaction: "Regular communication and oversight"
+      director_role: "Ensuring all departments align with overall creative vision"
+
+document_types:
+  creates:
+    - "Director's Vision Statement"
+    - "Shot Lists"
+    - "Director's Notes (for all departments)"
+    - "Performance Notes (for actors)"
+    - "Screening Notes"
+    - "Editorial Notes"
+    - "Creative Brief"
+
+  references:
+    - "Script (all versions)"
+    - "Storyboards"
+    - "Lookbooks"
+    - "Production Schedule"
+    - "All department plans and designs"
+    - "Dailies"
+    - "Edit versions"
+
+query_templates:
+  common_questions:
+    - "What is the emotional core of [scene]?"
+    - "What is the character's objective in [scene]?"
+    - "What visual approach serves [theme/moment]?"
+    - "What coverage is needed for [scene]?"
+    - "What are the key beats in [sequence]?"
+    - "How does [scene] connect to overall arc?"
+    - "What tone are we establishing for [sequence]?"
+    - "What performance notes exist for [character/actor]?"
+    - "What is the intended pacing for [sequence]?"
+
+decision_points:
+  critical_decisions:
+    - decision: "Overall Visual Style"
+      timing: "Development/Pre-production"
+      factors:
+        - "Story requirements"
+        - "Genre conventions"
+        - "Thematic resonance"
+        - "Budget and resources"
+        - "Personal artistic vision"
+      affects: ["All visual departments", "Budget", "Schedule"]
+
+    - decision: "Casting"
+      timing: "Pre-production"
+      factors:
+        - "Acting ability"
+        - "Character embodiment"
+        - "Chemistry with other actors"
+        - "Name recognition (commercial considerations)"
+        - "Availability and budget"
+      affects: ["Performance", "Marketing", "Budget", "Schedule"]
+
+    - decision: "Final Cut Choices"
+      timing: "Post-production"
+      factors:
+        - "Story clarity"
+        - "Pacing and rhythm"
+        - "Performance selection"
+        - "Thematic emphasis"
+        - "Runtime considerations"
+      affects: ["Final film quality", "Audience reception", "Distribution"]
+
+resource_requirements:
+  essential_support:
+    - "Creative collaborators (DP, PD, Editor, etc.)"
+    - "Production support (UPM, AD, etc.)"
+    - "Time for preparation"
+    - "Budget for creative vision execution"
+
+risk_factors:
+  common_challenges:
+    - challenge: "Balancing vision with budget/schedule constraints"
+      mitigation:
+        - "Clear priorities and flexibility"
+        - "Creative problem-solving"
+        - "Strong collaboration with UPM and AD"
+
+    - challenge: "Managing creative disagreements"
+      mitigation:
+        - "Clear communication"
+        - "Understanding when to compromise vs stand firm"
+        - "Respecting expertise of collaborators"
+
+    - challenge: "Performance issues"
+      mitigation:
+        - "Thorough casting process"
+        - "Adequate rehearsal time"
+        - "Creating safe, supportive environment"
+        - "Clear, specific direction"
+
+    - challenge: "Losing perspective during production"
+      mitigation:
+        - "Trusted creative collaborators"
+        - "Regular dailies review"
+        - "Maintaining connection to script and themes"
+
+foundational_texts:
+  essential_reading:
+    - "Directing Actors - Judith Weston"
+    - "The Film Director's Intuition - Judith Weston"
+    - "On Directing - David Mamet"
+    - "Film Directing Shot by Shot - Steven D. Katz"
+    - "The Visual Story - Bruce Block"
+    - "Directing: Film Techniques and Aesthetics - Michael Rabiger"
+    - "Making Movies - Sidney Lumet"
+    - "In the Blink of an Eye - Walter Murch"
+    - "Story - Robert McKee"
+    - "The Hero with a Thousand Faces - Joseph Campbell"
+    - "Poetics - Aristotle"
+    - "Notes on the Cinematograph - Robert Bresson"
+    - "Hitchcock/Truffaut - François Truffaut"
+    - "Screenplay - Syd Field"
+
+  study_films:
+    approach: "Watch films multiple times - once for story, once for performance, once for visual style, once for editing rhythm"
+
+production_scales:
+  micro_budget:
+    focus: "Story and performance over spectacle, efficient shooting, creative limitations as creative opportunities"
+
+  low_budget:
+    focus: "Strategic resource allocation, prioritizing key creative elements, strong pre-production planning"
+
+  mid_budget:
+    focus: "Balanced approach, adequate resources for vision, some flexibility for creative exploration"
+
+  studio:
+    focus: "Full creative freedom (within studio oversight), extensive resources, managing large crews and complex productions"
+
+leadership_principles:
+  - "Clarity of vision"
+  - "Respect for all collaborators"
+  - "Decisiveness when needed"
+  - "Flexibility when appropriate"
+  - "Leading by example"
+  - "Creating safe creative environment"
+  - "Maintaining perspective under pressure"
+  - "Knowing when to listen and when to direct"

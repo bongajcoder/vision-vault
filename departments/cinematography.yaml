@@ -1,0 +1,570 @@
+# Vision Vault - Cinematography Department Module Configuration
+
+department:
+  code: "CIN"
+  name: "Cinematography"
+  full_name: "Department of Photography"
+  description: "Visual storytelling through camera, composition, and lighting; creating the photographic look and feel of the production"
+
+key_personnel:
+  - role: "Director of Photography (DP/Cinematographer)"
+    responsibilities:
+      - "Overall visual strategy and photographic style"
+      - "Collaboration with director on visual storytelling"
+      - "Camera and lighting design"
+      - "Leading camera and lighting departments"
+      - "Shot composition and framing"
+      - "Exposure and color decisions"
+
+  - role: "Camera Operator"
+    responsibilities:
+      - "Physical camera operation during takes"
+      - "Framing and composition execution"
+      - "Following blocking and movement"
+      - "Collaboration with DP on shot execution"
+
+  - role: "1st Assistant Camera (1st AC/Focus Puller)"
+    responsibilities:
+      - "Maintaining critical focus during shots"
+      - "Camera prep and maintenance"
+      - "Lens changes and technical setup"
+      - "Camera reports and documentation"
+
+  - role: "2nd Assistant Camera (2nd AC/Clapper Loader)"
+    responsibilities:
+      - "Slate/clapperboard operation"
+      - "Loading film/managing media"
+      - "Lens and filter organization"
+      - "Assisting 1st AC"
+
+  - role: "Digital Imaging Technician (DIT)"
+    responsibilities:
+      - "On-set color management"
+      - "Data wrangling and backup"
+      - "Monitoring image quality"
+      - "LUT creation and management"
+      - "Dailies creation"
+
+knowledge_foundation:
+  core_visual_components:
+    - component: "Space"
+      description: "Use of frame space, positive and negative space, depth"
+      key_concepts:
+        - "Foreground, middle ground, background"
+        - "Negative space and breathing room"
+        - "Frame within frame"
+        - "Compositional balance"
+
+    - component: "Line"
+      description: "Leading lines, horizon placement, directional flow"
+      key_concepts:
+        - "Vertical lines (strength, stability)"
+        - "Horizontal lines (calm, width)"
+        - "Diagonal lines (energy, movement)"
+        - "Converging lines (depth, perspective)"
+        - "Horizon line placement (rule of thirds)"
+
+    - component: "Shape"
+      description: "Geometric composition and visual structure"
+      key_concepts:
+        - "Triangular composition (stability)"
+        - "Circular composition (unity, completeness)"
+        - "Rectangular framing"
+        - "Organic vs geometric shapes"
+
+    - component: "Movement"
+      description: "Camera and subject movement within frame"
+      key_concepts:
+        - "Static shots (contemplation, observation)"
+        - "Pan/tilt (revelation, following)"
+        - "Dolly/tracking (intimacy, perspective shift)"
+        - "Crane (epic scale, god's eye)"
+        - "Handheld (immediacy, chaos, documentary feel)"
+        - "Steadicam (fluid subjective movement)"
+        - "Subject movement vs camera movement"
+
+    - component: "Tone"
+      description: "Contrast ratios, exposure, light/dark balance"
+      key_concepts:
+        - "High key (bright, low contrast, optimistic)"
+        - "Low key (dark, high contrast, dramatic)"
+        - "Lighting ratios (key to fill)"
+        - "Exposure for mood"
+        - "Zone system application"
+
+    - component: "Color"
+      description: "Color theory, palette, emotional impact"
+      key_concepts:
+        - "Color psychology (warm vs cool)"
+        - "Complementary colors"
+        - "Analogous color schemes"
+        - "Color as character/theme identifier"
+        - "Color temperature (Kelvin scale)"
+        - "Color grading vs color correction"
+
+    - component: "Rhythm"
+      description: "Visual pacing through composition and movement"
+      key_concepts:
+        - "Shot duration considerations"
+        - "Visual beats and pauses"
+        - "Matching editorial rhythm"
+        - "Camera movement pacing"
+
+  technical_foundations:
+    camera:
+      core_knowledge:
+        - "Sensor size (Full Frame, S35, M43, etc.)"
+        - "Resolution (2K, 4K, 6K, 8K+)"
+        - "Frame rates (24p, 25p, 30p, 48p, 60p, 120p+)"
+        - "Shutter angle vs shutter speed"
+        - "ISO/exposure index"
+        - "Compression codecs (ProRes, RAW, etc.)"
+        - "Bit depth (8-bit, 10-bit, 12-bit, 16-bit)"
+        - "Color space and gamma"
+
+    lenses:
+      core_knowledge:
+        - "Focal length and field of view"
+        - "Prime vs zoom lenses"
+        - "Aperture and T-stops"
+        - "Depth of field control"
+        - "Lens characteristics (sharpness, bokeh, aberrations)"
+        - "Anamorphic vs spherical"
+        - "Vintage vs modern glass"
+
+    continuity:
+      core_knowledge:
+        - "Screen direction and 180-degree rule"
+        - "Eye-line matching"
+        - "Action matching"
+        - "Continuity of lighting and exposure"
+        - "Shot-to-shot flow"
+
+    composition:
+      core_knowledge:
+        - "Rule of thirds"
+        - "Golden ratio/Fibonacci spiral"
+        - "Center framing for symmetry/formality"
+        - "Headroom and look room"
+        - "Depth through layers"
+        - "Dutch angles (psychological unease)"
+
+    coverage:
+      shot_types:
+        - "Establishing shot (location context)"
+        - "Master shot (scene coverage)"
+        - "Medium shot (interaction)"
+        - "Close-up (emotion, detail)"
+        - "Extreme close-up (intense emotion, important detail)"
+        - "Over-the-shoulder (POV, conversation)"
+        - "Insert (object detail)"
+        - "Cutaway (editorial freedom)"
+
+  storytelling_elements:
+    - element: "Point of View"
+      description: "Objective vs subjective camera positioning"
+      techniques:
+        - "Objective: Observer position, neutral perspective"
+        - "Subjective: Character POV, emotional involvement"
+        - "Semi-subjective: Over-shoulder, aligned but not literal POV"
+
+    - element: "Visual Metaphor"
+      description: "Using imagery to represent abstract concepts"
+      techniques:
+        - "Shadows representing internal conflict"
+        - "Reflections for duality or self-examination"
+        - "Framing through bars/windows for imprisonment/freedom"
+        - "Low angles for power, high angles for vulnerability"
+
+    - element: "Character Perspective"
+      description: "Camera relationship to characters"
+      techniques:
+        - "Eye-level (equality, neutral)"
+        - "Low angle (power, dominance, heroic)"
+        - "High angle (vulnerability, weakness, god's view)"
+        - "Dutch angle (psychological instability)"
+        - "Intimate distance vs distant framing"
+
+    - element: "Subtext Visualization"
+      description: "Showing not telling through visual choices"
+      techniques:
+        - "Spatial relationships revealing power dynamics"
+        - "Isolation in frame showing loneliness"
+        - "Color temperature shifts for emotional state"
+        - "Focus choices directing attention/revealing priority"
+
+  practical_considerations:
+    script_analysis:
+      - "Multiple reads: story, emotion, technical, visual, style"
+      - "Scene breakdown for visual requirements"
+      - "Location implications"
+      - "Time of day and lighting considerations"
+      - "Special equipment needs"
+      - "VFX planning"
+
+    lookbook_creation:
+      - "Visual references (films, photography, art)"
+      - "Color palette definition"
+      - "Lighting style examples"
+      - "Camera movement references"
+      - "Mood and tone examples"
+
+    testing:
+      - "Camera tests (dynamic range, color science)"
+      - "Lens tests (sharpness, bokeh, flare characteristics)"
+      - "Lighting tests (skin tones, color rendering)"
+      - "Workflow tests (data management, color pipeline)"
+
+    crew_selection:
+      - "Camera operator chemistry"
+      - "1st AC skill and reliability"
+      - "Gaffer creative collaboration"
+      - "Key grip problem-solving ability"
+      - "DIT technical expertise"
+
+workflow:
+  pre_production:
+    script_analysis:
+      - "First read: Story and emotion"
+      - "Second read: Technical requirements"
+      - "Third read: Visual opportunities"
+      - "Fourth read: Stylistic approach"
+      - "Scene numbering and breakdown"
+
+    visual_development:
+      - "Director meetings on visual approach"
+      - "Lookbook assembly"
+      - "Location scouts (tech scouts)"
+      - "Production design collaboration"
+      - "Storyboarding key sequences"
+      - "Shot list creation"
+
+    technical_preparation:
+      - "Camera package selection"
+      - "Lens package selection"
+      - "Lighting package planning"
+      - "Grip equipment requirements"
+      - "Testing cameras and lenses"
+      - "Workflow establishment (data, color, dailies)"
+
+    crew_assembly:
+      - "Interview and hire camera operator"
+      - "Interview and hire 1st AC"
+      - "Interview and hire 2nd AC"
+      - "Collaborate with gaffer selection"
+      - "Collaborate with key grip selection"
+      - "Hire DIT"
+      - "Determine additional camera crew needs"
+
+    production_meetings:
+      - "Director meetings (creative)"
+      - "Production meetings (logistics)"
+      - "Department head meetings (coordination)"
+      - "Location tech scouts"
+      - "Rehearsals with actors"
+
+  production:
+    pre_shoot:
+      - "Equipment check and prep"
+      - "Review call sheet and schedule"
+      - "Confirm crew call times"
+      - "Prepare for day's requirements"
+
+    on_set:
+      blocking_process:
+        - "Watch director block scene with actors"
+        - "Discuss camera positions with director"
+        - "Plan coverage and angles"
+        - "Determine lens choices"
+        - "Plan camera movement if any"
+
+      lighting_process:
+        - "Collaborate with gaffer on lighting plan"
+        - "Set key light, fill light, back light"
+        - "Adjust for camera angle and movement"
+        - "Balance practical lights"
+        - "Control ambient light"
+        - "Check exposure and ratios"
+
+      photography_process:
+        - "Frame and compose each shot"
+        - "Monitor focus and exposure"
+        - "Adjust for each take"
+        - "Communicate with camera crew"
+        - "Review playback when needed"
+        - "Maintain continuity"
+
+      administrative:
+        - "Call lens and camera settings for camera reports"
+        - "Communicate issues to AD"
+        - "Coordinate with other departments"
+        - "Problem-solve technical issues"
+
+    end_of_day:
+      - "Review footage (if dailies available)"
+      - "Prep notes for next day"
+      - "Equipment check and wrap"
+      - "Communicate with DIT on data"
+
+  post_production:
+    dailies_review:
+      - "Color review with DIT/colorist"
+      - "Identify any issues"
+      - "Provide notes for next shoot day"
+
+    editorial_collaboration:
+      - "Availability for editor questions"
+      - "Provide insights on coverage intentions"
+
+    color_grading:
+      - "Attend DI/color grading sessions"
+      - "Collaborate with colorist on final look"
+      - "Approve final color"
+      - "Ensure original vision maintained"
+
+    final_deliverables:
+      - "Review final output"
+      - "Approve technical quality"
+
+collaboration_matrix:
+  primary_collaborators:
+    - department: "Directing"
+      interaction: "Constant - visual storytelling partnership"
+      key_touchpoints:
+        - "Script analysis and visual approach"
+        - "Lookbook development"
+        - "Location scouts"
+        - "Storyboarding"
+        - "On-set blocking and coverage"
+        - "Dailies review"
+        - "Post-production color"
+
+    - department: "Production Design"
+      interaction: "Very frequent - unified visual approach"
+      key_touchpoints:
+        - "Color palette coordination"
+        - "Lighting design integration"
+        - "Set design for camera angles"
+        - "Practical lighting elements"
+        - "Location selection"
+        - "Visual continuity"
+
+    - department: "Lighting (Gaffer)"
+      interaction: "Constant - lighting execution"
+      key_touchpoints:
+        - "Daily lighting design"
+        - "Equipment needs"
+        - "Power requirements"
+        - "Creative problem solving"
+        - "Maintaining lighting continuity"
+
+    - department: "Grip (Key Grip)"
+      interaction: "Constant - camera support and light control"
+      key_touchpoints:
+        - "Camera movement planning"
+        - "Rigging requirements"
+        - "Light diffusion and control"
+        - "Safety considerations"
+        - "Complex shot execution"
+
+  secondary_collaborators:
+    - department: "Costume"
+      interaction: "Moderate - visual coordination"
+      considerations:
+        - "Color coordination for lighting"
+        - "Texture and pattern considerations"
+        - "Reflectivity of materials"
+
+    - department: "Hair & Makeup"
+      interaction: "Moderate - visual coordination"
+      considerations:
+        - "Makeup for lighting and camera"
+        - "Continuity with lighting changes"
+
+    - department: "VFX"
+      interaction: "Frequent on VFX-heavy projects"
+      considerations:
+        - "Green screen lighting"
+        - "Tracking markers and reference"
+        - "Camera data for VFX"
+        - "Matching live action and CG lighting"
+
+    - department: "Sound"
+      interaction: "Coordination for equipment placement"
+      considerations:
+        - "Boom mic shadows"
+        - "Wireless mic visibility"
+        - "Noisy camera equipment"
+
+document_types:
+  creates:
+    - "Shot List"
+    - "Lighting Diagrams"
+    - "Camera Reports"
+    - "Lens Tests Documentation"
+    - "Lookbook / Visual References"
+    - "Technical Specifications (camera, lenses, workflow)"
+    - "Call Sheet Input (camera/lighting requirements)"
+    - "Daily Progress Reports"
+
+  references:
+    - "Script (all versions)"
+    - "Storyboards"
+    - "Location Information"
+    - "Production Schedule"
+    - "Director's Notes"
+    - "Production Design Concepts"
+    - "VFX Requirements"
+
+query_templates:
+  common_questions:
+    - "What is the lighting approach for [scene/sequence]?"
+    - "What camera movement is planned for [scene]?"
+    - "What lenses are designated for [scene/character/sequence]?"
+    - "What are the director's visual style notes for [scene/sequence]?"
+    - "What are the practical lighting elements in [set]?"
+    - "What color palette is established for [scene/location/character]?"
+    - "What special equipment is needed for [scene]?"
+    - "What are the shooting hours and sun position for [location/date]?"
+    - "What VFX considerations affect [scene]?"
+
+decision_points:
+  critical_decisions:
+    - decision: "Camera Selection"
+      timing: "Pre-production"
+      factors:
+        - "Image quality requirements"
+        - "Budget"
+        - "Workflow (file sizes, post pipeline)"
+        - "Lens compatibility"
+        - "Special features (high frame rates, RAW capability)"
+      affects: ["Post-Production", "UPM (budget)", "DIT workflow"]
+
+    - decision: "Visual Style"
+      timing: "Pre-production"
+      factors:
+        - "Director's vision"
+        - "Story requirements"
+        - "Genre conventions"
+        - "Budget and time"
+      affects: ["All visual departments", "Lighting", "Grip", "Post-Production"]
+
+    - decision: "Lighting Approach"
+      timing: "Per scene/location"
+      factors:
+        - "Mood and tone"
+        - "Practical lighting integration"
+        - "Time and budget"
+        - "Location limitations"
+      affects: ["Gaffer", "Grip", "Power/Generators", "Schedule"]
+
+resource_requirements:
+  equipment:
+    - "Camera bodies"
+    - "Lens package"
+    - "Camera support (tripod, dolly, crane, Steadicam)"
+    - "Monitoring (director's monitor, DIT station)"
+    - "Lighting package (managed by gaffer)"
+    - "Grip equipment (managed by key grip)"
+    - "Media/storage"
+    - "Power distribution"
+
+  personnel:
+    minimum_crew:
+      - "Director of Photography"
+      - "Camera Operator (or DP operates)"
+      - "1st AC"
+      - "Gaffer"
+      - "Key Grip"
+
+    full_crew:
+      - "Director of Photography"
+      - "A Camera Operator"
+      - "B Camera Operator (if applicable)"
+      - "1st AC (A Camera)"
+      - "1st AC (B Camera if applicable)"
+      - "2nd AC (A Camera)"
+      - "2nd AC (B Camera if applicable)"
+      - "DIT"
+      - "Gaffer"
+      - "Best Boy Electric"
+      - "Electricians (3-6+)"
+      - "Key Grip"
+      - "Best Boy Grip"
+      - "Grips (3-6+)"
+      - "Dolly Grip (if needed)"
+
+  budget_considerations:
+    - "Camera rental costs"
+    - "Lens rental costs"
+    - "Lighting and grip rental"
+    - "Crew rates"
+    - "Expendables"
+    - "Power/generator costs"
+    - "Transportation of equipment"
+
+risk_factors:
+  common_challenges:
+    - challenge: "Weather and natural light changes"
+      mitigation:
+        - "Flexible scheduling"
+        - "Backup lighting plans"
+        - "Shooting order adjustments"
+
+    - challenge: "Equipment failure"
+      mitigation:
+        - "Backup cameras and lenses"
+        - "Experienced 1st AC for maintenance"
+        - "Vendor support relationships"
+
+    - challenge: "Time pressure"
+      mitigation:
+        - "Efficient lighting plans"
+        - "Pre-rigging when possible"
+        - "Clear shot list priorities"
+        - "Good communication with AD"
+
+    - challenge: "Difficult locations"
+      mitigation:
+        - "Thorough tech scouts"
+        - "Creative problem solving"
+        - "Portable/battery powered solutions"
+
+foundational_texts:
+  essential_reading:
+    - "The Five C's of Cinematography - Joseph V. Mascelli"
+    - "Cinematography: Theory and Practice - Blain Brown"
+    - "Painting With Light - John Alton"
+    - "The Filmmaker's Eye - Gustavo Mercado"
+    - "Film Directing Shot by Shot - Steven D. Katz"
+    - "The Visual Story - Bruce Block"
+    - "Matters of Light and Depth - Ross Lowell"
+    - "The Camera Assistant's Manual - David Elkins"
+    - "Set Lighting Technician's Handbook - Harry Box"
+    - "Motion Picture and Video Lighting - Blain Brown"
+    - "Master Shots Series - Christopher Kenworthy"
+    - "American Cinematographer Manual (ASC)"
+
+  online_resources:
+    - "American Society of Cinematographers (ASC)"
+    - "British Society of Cinematographers (BSC)"
+    - "CML (Cinematography Mailing List)"
+    - "No Film School"
+    - "IndieWire - Filmmaker Toolkit"
+
+production_scales:
+  micro_budget:
+    typical_setup: "DP operates camera, minimal crew"
+    focus: "Maximize natural light, efficient setups"
+
+  low_budget:
+    typical_setup: "DP, operator, small camera and lighting crew"
+    focus: "Strategic lighting, limited equipment package"
+
+  mid_budget:
+    typical_setup: "Full camera department, adequate lighting package"
+    focus: "Balanced approach, some specialty equipment"
+
+  studio:
+    typical_setup: "Multiple camera crews, extensive equipment"
+    focus: "Full creative freedom, backup systems, specialty rigs"
