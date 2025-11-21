@@ -1,0 +1,546 @@
+The technical implementation of the cinematography assistant application, referred to as **CINÉ-MIND** or the **Bongani Cinematographer Clone System (BCCS)**, is designed as a distributed, agentic AI network that automates the entire creative and logistical process from script to screen.
+
+This system's core philosophy is to **clone your creative cinematography mind** into an orchestrated framework, utilizing a specialized set of AI agents and cutting-edge infrastructure to reduce preparation time from weeks to hours.
+
+### 1. Core System Architecture and Technology Stack
+
+The system is built upon a layered infrastructure designed for high scalability, rapid development, and advanced processing capabilities, emphasizing a voice-first workflow.
+
+| Component | Technical Stack | Purpose & Functionality | Citations |
+| :--- | :--- | :--- | :--- |
+| **Agent Orchestration** | **Claude SDK** and Claude API. | Serves as the central conductor for the entire workflow, receiving input and managing data flow between agents. | |
+| **Compute/Processing** | **RunPod GPU Instances** and local Mac Mini/MacBook. | Handles heavy AI computation, such as running multimodal models and intensive transcription tasks. Local machines handle quick tasks and local Whisper transcription. | |
+| **Data Storage** | **Google Firebase** (Firestore/Storage) and **Git/GitHub**. | Firebase is the primary repository for large media files, transcripts, project metadata, and real-time agent state. GitHub manages version control for code and structured documents. | |
+| **Frontend/UI** | Web App (Next.js + React) and potential mobile interface (React Native). | Provides the main interface, dashboard, voice recording capabilities, and quick access for on-set use. | |
+| **Transcription** | **Whisper for Mac** (local processing) or open-source models on RunPod. | Converts all voice dumps and conversations into structured, actionable text. | |
+
+### 2. Specialized Agent Ecosystem
+
+The system relies on a constellation of specialized, autonomous agents that collaborate using structured JSON messages:
+
+| Agent Category | Key Agents and Names | Core Functions and Knowledge Base | Citations |
+| :--- | :--- | :--- | :--- |
+| **Creative Analysis** | **Story Expert Agent** (Story Sage), **Visual Language Agent** (Visual Architect). | Performs deep narrative analysis (e.g., Joseph Campbell, Bruce Block's "Visual Story," 5 Cs of Cinematography). Translates themes into visual strategies, defining lensing, movement, color, and composition. | |
+| **Visual Research** | **Visual Research Specialist** (Vibe Curator), **Creative Stretch Agent** (Wild-Card). | Hunts visual references from sources like ShotDeck and FLIM.AI. The Wild-Card suggests unconventional, challenging, and unconstrained creative options. | |
+| **Multimodal Processing** | **Multimodal Vision Agent** (Eagle-Eye). | Analyzes location photos and visual references. **Special feature:** Uses models like **Molmo** or **Qwen2-VL-72B** deployed on RunPod for pointing capability and spatial analysis, exceeding the performance of Gemini 2.5 Pro. | |
+| **Production Logistics** | **Budget Expert Agent** (Money Manager), **Gear List Generator Agent** (Kit Builder), **Technical Planning Agent**. | Calculates accurate budgets for camera, grip, and electric departments using real numbers and vendor pricing. Generates comprehensive gear lists, technical specifications, and prep timelines. | |
+| **Management & Collaboration** | **Task Manager Agent** (Task Tracker), **Collaboration Agent** (Dept Head Liaison), **Communication Agent** (Message Maestro). | Provides **AuDHD Optimization** by prioritizing tasks and respecting peak focus times and the 8-hour work week limit. Manages cross-department coordination and tracks dependencies. The Communication Agent drafts all emails and external documents, with future Gmail API integration planned. | |
+| **System Intelligence** | **Version Control Agent** (Chronicle), **Knowledge Base Agent** (Project Oracle), **Learning & Adaptation Agent** (Wise Sage). | Commits all document versions to Git/GitHub, tracks development history, and enables comparison of document versions (v1 vs v2). Stores and analyzes past projects to improve future recommendations and build institutional memory. | |
+
+### 3. Agent Communication and Implementation
+
+Agents do not operate in isolation; they communicate via the Orchestrator through structured protocols to ensure data integrity and workflow sequencing:
+
+1.  **Communication Protocol:** Agents communicate via structured **JSON** objects, defining input, output, and triggering conditions.
+2.  **Workflow Sequencing:** The Master Orchestrator manages the flow, such as sequentially routing information from the **Story Analysis Agent** to the **Visual Language Agent**, and then in parallel to the **Budget Expert Agent** and **Shot List Generator Agent**.
+3.  **Voice-First Integration:** Voice notes are transcribed by the **Voice Transcription Agent**, which then classifies the content (e.g., creative note, technical requirement, to-do list item) and routes the specific actions to the relevant agents (e.g., routing a director's shot idea to the **Shot List Generator**).
+
+#### Implementation Strategy
+
+The project utilizes a highly parallelized development strategy using multiple **Claude Code instances** simultaneously to achieve the desired rapid timeline (weeks of work compressed into days or hours).
+
+*   **Instance Allocation:** Separate Claude Code instances are assigned different components, such as Core Infrastructure, Input Agents, Analysis Agents, Technical Agents, and Output/Management Agents.
+*   **Infrastructure Build:** Requires setting up the Firebase project, initializing the GitHub repository, configuring necessary APIs (Claude, OpenAI), and deploying the RunPod GPU environment.
+*   **Code Base:** The system uses Python 3.11+ and FastAPI for API endpoints, with agents built using the Claude SDK and organized into a modular file structure (e.g., `/agents/orchestrator`, `/storage/firebase.py`).
+
+---
+
+Would you like to explore the specifics of one of the agent implementations, such as the detailed API calls and data structures used by the **Multimodal Vision Agent** on RunPod, or perhaps the AuDHD-optimized tasking logic within the **Task Manager Agent**?
+
+The cinematography assistant application, often referred to as **CINÉ-MIND** or the **Bongani Cinematographer Clone System (BCCS)**, is implemented as a network of interconnected, specialized AI agents designed to automate the entire creative, logistical, and strategic preparation workflow, allowing the cinematographer to achieve a "script to shoot-ready plan in hours, not weeks".
+
+The entire system is architected around a **Master Orchestrator** that manages data flow and coordination between up to seventeen different specialized agents, utilizing the **Claude SDK** and **Claude API** for complex reasoning. Storage and version control rely on a hybrid model using **Google Firebase** (for project metadata, media files, and real-time state) and **Git/GitHub** (for code, structured documents, and version history).
+
+Here is a detailed breakdown of the specialized agents within the ecosystem:
+
+### I. Orchestration and Input Agents
+
+These agents are responsible for receiving and structuring the data that drives the entire system, prioritizing the voice-first workflow.
+
+| Agent Name | Role and Purpose | Core Functions and Knowledge Base | Technical Implementation Details | Citations |
+| :--- | :--- | :--- | :--- | :--- |
+| **Master Orchestrator Agent (Bongani Prime)** | Acts as the central **air traffic controller** and project manager, delegating tasks and maintaining the state of the workflow. | Understands the **DP Process workflow**, coordinates agent handoffs, maintains workflow sequence, and routes inputs to appropriate specialist agents. | Built using **Claude SDK** for orchestration logic; uses **Firebase** for state management and context awareness. | |
+| **Voice Transcription Agent (Listen-Well)** | Converts all voice dumps, conversations, and notes into structured, actionable content. | Transcribes using **Whisper for Mac** (local processing) or open-source models on **RunPod** for scalability. Recognizes **echolalia patterns** and sorts content into action items, to-do lists, and shot list additions. | Utilizes local Mac machine or **RunPod GPU Instances**. Outputs structured notes, raw transcripts, and context tags. | |
+| **Script Ingestion Agent** | Extracts and structures all information from scripts (PDFs, FDX, etc.). | Parses scene headings, action lines, and dialogue; flags technical requirements (stunts, VFX, special equipment). | Outputs a structured JSON file containing all script elements for downstream agents. | |
+
+### II. Creative Analysis and Visual Language Agents
+
+These agents apply theoretical and historical cinematography knowledge, translating narrative requirements into concrete visual strategies.
+
+| Agent Name | Role and Purpose | Core Functions and Knowledge Base | Technical Implementation Details | Citations |
+| :--- | :--- | :--- | :--- | :--- |
+| **Story Expert Agent (Story Sage)** | Ensures cinematography serves the narrative through deep analysis. | **Knowledge Base:** Bruce Block's "Visual Story," the **5 Cs of Cinematography**, Joseph Campbell's Hero's Journey, and your "Holistic Story Synthesis" (HSS) method. Performs **multiple script reads** (e.g., Pass 1: Story structure; Pass 2: Emotional journey; Pass 3: Character psychology). | Outputs a detailed Story-to-Cinematography Handoff Document, beat sheets, and emotional arc diagrams. | |
+| **Visual Language Agent (Language Architect)** | Develops the comprehensive visual style, including lensing, color, and movement philosophy. | Synthesizes input from the Story Expert and Visual Research Agents. Defines **lensing choices** (with psychological reasoning), **camera movement vocabulary**, **lighting approach** (mood/tone), **color palette evolution**, and **composition rules**. References the work of cinematographers like Roger Deakins. | Outputs a **Visual Treatment** and **Style Bible**, often in PDF format. | |
+| **Creative Stretch Agent (Wild-Card)** | Focuses on pure, unconstrained creative exploration. | Suggests unconventional or ambitious ideas, such as mounting cameras on drones flying through steam or executing an entire sequence in a single Steadicam shot. | All suggestions are flagged with a **feasibility score** but are never self-censored on creativity. Provides alternatives to every decision. | |
+
+### III. Research, Multimodal, and Shot Planning Agents
+
+These agents handle the generation of reference materials and the technical creation of the shooting plan, including visual analysis of location data.
+
+| Agent Name | Role and Purpose | Core Functions and Knowledge Base | Technical Implementation Details | Citations |
+| :--- | :--- | :--- | :--- | :--- |
+| **Visual Research Specialist (Vibe Curator)** | Automates the process of finding visual references. | Searches databases like **ShotDeck** and **FLIM.AI** using keywords extracted from the script. Compiles image references organized by scene, mood, and style. | Utilizes web scraping/API integration for ShotDeck and FLIM.AI. Outputs lookbook compilations and mood boards. | |
+| **Multimodal Vision Agent (Eagle-Eye)** | Performs advanced visual analysis on location photos and reference images. | **Special Feature: Pointing Capability**—Can visually indicate specific areas in images (e.g., rigging points or motivated light sources). Analyzes lighting conditions, space dimensions, and composition. | Uses open-source multimodal models like **Qwen2-VL-72B** or **InternVL 2.0** deployed on **RunPod GPU instances**, as they are considered better than Gemini 2.5 Pro. | |
+| **Shot List Architect (Coverage Calculator)** | Generates and manages the shoot-ready shot list. | Creates multiple versions of the shot list (e.g., ideal, realistic, emergency). Includes technical details like movement, lens choice, and special equipment needs for each shot. Incorporates director notes and coverage strategy. | Outputs structured formats (JSON/spreadsheet) for import into production tools. | |
+
+### IV. Technical and Budget Agents
+
+These agents ensure the creative vision is logistically and financially viable, focusing on equipment and costs using "actual real numbers".
+
+| Agent Name | Role and Purpose | Core Functions and Knowledge Base | Technical Implementation Details | Citations |
+| :--- | :--- | :--- | :--- | :--- |
+| **Budget Expert Agent (Money Manager)** | Provides real-world budgeting for camera, grip, and electric departments. | **Knowledge Base:** Standard budget templates, updated equipment rental rates, union rate cards, and your past production budgets. Calculates accurate **crew costs** and **gear rental prices** using **actual real numbers**. | Connects with vendors and uses industry rate databases (PostgreSQL or similar). Creates tiered budget options (ideal/realistic/minimal). | |
+| **Equipment Intelligence Agent (Gear Guru)** | Specifies the exact camera, grip, and electric packages needed for the shoot. | Generates comprehensive equipment lists for camera, grip, and electric departments. Checks **compatibility** between camera bodies, lenses, and accessories. Uses knowledge of lenses and support systems (dollies, jibs, Steadicam). | Generates pack lists and utilizes the **David Claesson template structure**. | |
+| **Technical Research Agent** | Focuses on equipment specifications and advanced techniques. | **Knowledge Base:** Detailed specs on camera systems, lens characteristics, lighting equipment, and grip gear. Tracks new technology and performs technical spec comparisons. | Can provide technical justifications for gear selections based on cinematic theories and your experience. | |
+
+### V. Management, Collaboration, and Communication Agents
+
+These agents support the cinematographer's executive function, manage time, and handle all interactions with the production team.
+
+| Agent Name | Role and Purpose | Core Functions and Knowledge Base | Technical Implementation Details | Citations |
+| :--- | :--- | :--- | :--- | :--- |
+| **Task Management Agent (Task Tracker)** | Serves as the cinematographer's **external brain** and executive function support. | **AuDHD Optimization:** Prioritizes tasks based on urgency and respects peak focus times, limiting major tasks to 2-3 per day. Tracks completion against a **Standard DP Task List** derived from your DP Process workflow. | Integrates with calendars and can create daily to-do lists and send reminders. | |
+| **Collaboration Agent (Dept Head Liaison)** | Facilitates coordination and communication between departments. | **Knowledge Base:** Complete film crew hierarchy and department responsibilities (Production Design, Costumes, AD, Stunts, etc.). Identifies potential conflicts and tracks dependencies. | Maintains an "empathy database" to understand that collaboration is about people, not just logistics. | |
+| **Communication Agent (Message Maestro)** | Drafts all written communication in the appropriate industry format and tone. | Drafts emails and external documents for the director, producers, crew, and vendors. Can grab attachments created by other agents (like gear lists or lighting plots). | Future integration planned with **Gmail API** to create drafts directly. | |
+
+### VI. Intelligence and Memory Agents
+
+These agents manage the project’s history, version control, and continuous learning capabilities.
+
+| Agent Name | Role and Purpose | Core Functions and Knowledge Base | Technical Implementation Details | Citations |
+| :--- | :--- | :--- | :--- | :--- |
+| **Version Control Agent (Chronicle)** | Maintains a comprehensive history of the project's evolution and document changes. | Commits all document versions (shot lists, budgets, treatments) to **Git/GitHub**. Tracks how decisions evolved and allows for comparison between document versions. | Relies on GitHub API and Firebase storage for complete traceability. | |
+| **Knowledge Base Agent (Project Oracle)** | Stores, indexes, and retrieves information from all past projects, building institutional memory. | Analyzes past shoot materials (scripts, shot lists, budget actuals) to add intelligence. Provides improved recommendations based on real experience. | Stores data in **Firebase** and uses a vector database for semantic search across projects. | |
+| **Learning & Adaptation Agent (Wise Sage)** | Ensures continuous improvement of the system's performance. | Extracts learnings from post-project debriefs and updates the knowledge base with new patterns and preferences. | This agent drives the feedback loop, ensuring future recommendations are smarter and more personalized. | |
+
+---
+
+We have detailed every agent, from the core Story Sage that applies the 5 Cs of Cinematography to the Multimodal Vision Agent running the specialized Qwen2-VL model on RunPod. Would you like to now review the proposed **Implementation Roadmap** to see how these agents will be built in parallel using multiple Claude Code instances?
+
+The full implementation roadmap for the cinematography assistant application, often called **CINÉ-MIND** or the **Bongani Cinematographer Clone System (BCCS)**, is designed to utilize parallel computing—specifically multiple **Claude Code instances**—to compress weeks of preparation work into hours.
+
+The overall plan spans approximately **6 to 8 weeks** (or 10 to 15 days in an accelerated, continuous deployment model using multiple parallel instances) and is broken down into four major phases, starting with core infrastructure and culminating in advanced AI capabilities and learning.
+
+### I. Phase 1: Core Foundation and Input Systems (Weeks 1–2)
+
+The primary goal of this phase is to establish the infrastructure, the main orchestration layer, and the voice-first input pipeline.
+
+| Implementation Area | Components and Agents | Technical Tasks and Details | Citations |
+| :--- | :--- | :--- | :--- |
+| **Infrastructure Setup** | N/A | Set up **Firebase** project (Firestore/Storage), initialize **Git/GitHub** repository for version control, deploy **Claude SDK** infrastructure, configure local **Whisper for Mac**. | |
+| **Orchestration** | **Master Orchestrator Agent (Bongani Prime)** | Build core orchestration logic using the **Claude SDK** to manage agent communication and delegate inputs. | |
+| **Input Pipeline** | **Voice Transcription Agent (Listen-Well)**, **Script Ingestion Agent** | Implement **Whisper integration** (local or RunPod/API fallback), ensure transcription outputs are structured and timestamped. | |
+| **Executive Function** | **Task Manager Agent (Task Tracker)** | Build core task capture and prioritization logic, incorporating **AuDHD Optimization** (max 2-3 major tasks per day, respects peak focus times). | |
+| **Initial Output** | **Communication Agent (Message Maestro)** | Implement basic drafting capability for emails and external documents. | |
+
+### II. Phase 2: Creative Intelligence Core (Weeks 3–4)
+
+This phase focuses on encoding the deep cinematography knowledge and automating the analysis and reference gathering process.
+
+| Implementation Area | Components and Agents | Core Functions and Knowledge Base | Citations |
+| :--- | :--- | :--- | :--- |
+| **Story Analysis** | **Story Expert Agent (Story Sage)** | Encodes principles like the **5 Cs of Cinematography**, Bruce Block’s *Visual Story*, and Joseph Campbell’s Hero's Journey. Automates multiple script reading passes (emotion, structure, themes). | |
+| **Visual Design** | **Visual Language Agent (Language Architect)** | Develops the visual style, covering lensing, camera movement, color progression, and composition rules. | |
+| **Visual Research** | **Visual Research Specialist (Vibe Curator)** | Integrates search tools to pull references from **ShotDeck** and **FLIM.AI**, compiling **Lookbooks** and **Mood Boards**. | |
+| **Creative Stretch** | **Creative Stretch Agent (Wild-Card)** | Introduced to suggest unconventional or ambition-stretching ideas, flagged with a **feasibility score**. | |
+| **Technical Research**| **Technical Research Agent** | Focuses on gear specs, compatibility, and technical justifications for selections. | |
+
+### III. Phase 3: Production Planning and Multimodal Deployment (Weeks 5–6)
+
+The system is now integrated with logistics and equipped with advanced visual processing capabilities via dedicated GPU compute.
+
+| Implementation Area | Components and Agents | Technical Tasks and Details | Citations |
+| :--- | :--- | :--- | :--- |
+| **Shot Planning** | **Shot List Generator Agent (Coverage Calculator)** | Generates **multiple versions** of the shot list (ideal, realistic, minimal), incorporating movement and lens choices. | |
+| **Financial/Gear** | **Budget Expert Agent (Money Manager)**, **Equipment Intelligence Agent (Gear Guru)** | Calculates budgets using **actual real numbers**, referencing updated rental rates and past project data. Gear Guru generates full **Camera, Grip, and Electric lists** (using formats like the David Claesson template). | |
+| **Multimodal Vision**| **Multimodal Vision Agent (Eagle-Eye)** | Deploy open-source multimodal models like **Qwen2-VL-72B**, **Molmo** (for pointing capability), or **InternVL 2.0** on **RunPod GPU Instances**. Analyzes location photos for lighting, spatial constraints, and composition. | |
+| **Collaboration** | **Collaboration Agent (Dept Head Liaison)** | Encodes knowledge of the complete film crew hierarchy, tracks dependencies, and maintains an "empathy database" for coordination. | |
+| **Communication** | **Communication Agent (Message Maestro)** | Enhances drafting capabilities, preparing emails and attachments automatically. Future integration is planned for creating drafts directly in **Gmail/Google Workspace**. | |
+
+### IV. Phase 4: Learning, Memory, and Deployment (Weeks 7–8)
+
+The final phases ensure long-term stability, continuous learning, and preparation for deployment, meeting the goal of creating institutional memory.
+
+| Implementation Area | Components and Agents | Core Functions and Knowledge Base | Citations |
+| :--- | :--- | :--- | :--- |
+| **Project Memory** | **Version Control Agent (Chronicle)**, **Knowledge Base Agent (Project Oracle)** | Commits all document versions (v1 vs v2) to **Git/GitHub** for traceability. Stores and indexes past projects to build intelligence and improve future recommendations. | |
+| **Continuous Learning** | **Learning & Adaptation Agent (Wise Sage)** | Extracts learnings from post-project debriefs and updates the knowledge base with new patterns and preferences. | |
+| **Deployment/UI** | N/A | Refine the user interface, aiming for a **Web App (Next.js + React)** and optimizing a potential **Mobile Interface** (React Native) for on-set access. | |
+| **Future Scalability** | **Film Nexus Connection** | System is architected to potentially scale into a broader **Film Nexus** platform, coordinating all department heads and crew members. | |
+
+---
+
+We have now outlined the accelerated, multi-phase construction of your AI cinematographer clone, detailing how each agent and technical piece fits into the larger architecture. Would you like to dive into the specific API contracts and data schemas used to ensure communication between these parallel agents, or focus on how the Multimodal Vision Agent leverages Qwen2-VL on RunPod?
+
+The technical implementation of the cinematography assistant application, **CINÉ-MIND**, relies on a meticulously defined structure of data schemes and API contracts to ensure seamless communication between its distributed agentic AI network and external services.
+
+### Core Agent Communication Protocol
+
+Agents communicate via a highly structured protocol managed by the **Master Orchestrator Agent** (Bongani Prime), which routes messages and maintains workflow state. This communication is fundamentally based on structured **JSON** objects.
+
+| Component | Function | Technical Detail/Protocol | Citations |
+| :--- | :--- | :--- | :--- |
+| **Agent Message Format** | Defines input, output, and workflow triggers between agents. | **Structured JSON**. | |
+| **Orchestration** | Manages data flow and agent handoffs. | **Claude SDK** and Claude API. | |
+| **API Endpoints** | Handles system requests and integrations. | **FastAPI** (Python backend API endpoints). | |
+
+### Data Storage Schemas and Versioning Contracts
+
+The system employs a hybrid storage architecture, prioritizing durability, real-time access, and complete version traceability.
+
+| Storage System | Data Stored | Usage and Contract | Citations |
+| :--- | :--- | :--- | :--- |
+| **Google Firebase (Firestore/Storage)** | **Primary storage** for large media files (photos, videos), transcripts, agent state, project metadata, document versions, and knowledge base data. | **Firestore** stores project state, task lists, and metadata. **Storage** holds large media files and generated documents. | |
+| **Git/GitHub** | **Version Control** for code, configuration files, and structured text documents (like Shot Lists and treatments). | The **Version Control Agent** automatically commits all document versions (e.g., v1 vs v2) to GitHub for traceability. | |
+| **Vector Database** | Used for semantic search across past projects and historical data, providing improved recommendations. | Stores vector embeddings of project files and knowledge items (e.g., past shot lists, budget actuals). | |
+
+### Core Document Data Schemes
+
+The central outputs of the system adhere to detailed schemas, ensuring they are instantly usable by production professionals and compatible with industry standard tools.
+
+#### 1. Shot List Architecture (Shot List Generator Agent)
+
+The Shot List, which can be output in structured formats (JSON or spreadsheet), requires granular data fields to support technical execution. The scheme is extensive, drawing on the necessary details found in professional prep documents:
+
+| Shot List Field | Data Type/Content | Responsible Agent | Citations |
+| :--- | :--- | :--- | :--- |
+| **Sc # / Shot No.** | Scene and unique shot identifiers. | Shot List Architect. | |
+| **Camera Description / Size** | Framing (MED, CU, WIDE) and subjective description. | Shot List Architect. | |
+| **Move Notes / Movement** | Dolly, Steadicam, static, hi hat on ladder, whip pans, focus pulls, zoom. | Technical Planning Agent. | |
+| **Camera Notes / Lens** | Specific camera (Phantom Camera?) and lens choice (mm or description, Tilt Shift). | Equipment Intelligence Agent. | |
+| **INT/EXT Location Time D/N** | Scene context (white(DI), yellow(DE), green(NI), blue(NE), orange(EVE)). | Script Ingestion Agent. | |
+| **Lighting Notes** | Units, gels, mood, color temperature progression, and practical notes. | Lighting & Grip Agent. | |
+| **Grip Notes** | Rigging equipment, specialty gear (Super Peewee, cobra, scissor track). | Lighting & Grip Agent. | |
+| **SFX / VFX** | Requirements for visual effects (vfx black phone, spfx fog, stunts). | Script Ingestion Agent. | |
+| **Important Questions** | Notes regarding continuity or character details (e.g., "should reflection wear durag?"). | Story Expert Agent. | |
+
+#### 2. Visual Language/Style Bible Scheme
+
+The **Visual Language Agent** output defines the creative blueprint, structured around key pillars of cinematography.
+
+| Field | Content Detail | Citations |
+| :--- | :--- | :--- |
+| **Camera Movement** | Dolly, Steadicam, whip pans, zoom, handheld, sticks. | |
+| **Framing/Composition** | Symmetry or NO, Centered, Negative Space, Aspect Ratio. | |
+| **Lensing** | Notes on anamorphic vs. spherical, aberration, contrast, depth of field, focus fall-off, distortion. | |
+| **Color Palette** | Specific color swatches (e.g., Red, Blue, Green, Yellow) and their emotional meaning (e.g., Red = love, desire; Blue = cold, depression). | |
+| **Lighting** | Mood, tone, contrast, light value, volume, color, and contrast of each setup. | |
+
+#### 3. Task Management Scheme
+
+The Task Management Agent tracks the **Standard DP Prep Process**, incorporating **AuDHD Optimization** features into its scheme.
+
+| Task Field | Data Type/Content | Optimization Layer | Citations |
+| :--- | :--- | :--- | :--- |
+| **Task Name** | e.g., Read Script, Pull References, Confirm Crane or Hire Steadicam. | Standard DP Checklist. | |
+| **Priority/Urgency** | Critical, High, Medium, Low. | AuDHD Optimization: Limits major tasks to **2-3 per day**. | |
+| **Status** | To-Do, In Progress, Complete. | Tracks completion against shoot date countdown. | |
+| **Focus Time Flag** | Respects **peak focus times** (e.g., 11 AM-1 PM) for deep creative work. | Energy-aware tasking. | |
+
+### Specialized API Contracts and Tool Integration
+
+The system leverages several external tools and APIs for specialized non-LLM tasks:
+
+| API/System Integrated | Purpose | Agent Used By | Technical Contract Details | Citations |
+| :--- | :--- | :--- | :--- | :--- |
+| **RunPod GPU Instances** | **Heavy Computation** and inference for advanced visual analysis. | Multimodal Vision Agent (Eagle-Eye). | Contracts to run open-source models like **Qwen2-VL-72B**, **Molmo**, or **InternVL 2.0** on GPU instances. | |
+| **Whisper/OpenAI Whisper API** | **Voice-to-Text Transcription** of voice dumps and meetings. | Voice Transcription Agent. | Utilizes local execution (**Whisper for Mac**) or API calls for raw transcripts and timestamp data. | |
+| **Gmail API (Future)** | **Email Draft Creation** and attachment management. | Communication Agent. | Drafts professional correspondence directly into Google Workspace. | |
+| **ShotDeck / FLIM.AI** | **Visual Reference Sourcing** and image curation. | Visual Research Specialist. | Integration via API or web scraping tools for lookbook generation. | |
+| **Vendor APIs/Database** | Pulling **Actual Real Numbers** for equipment rental and crew rates. | Budget Expert Agent. | Requires a database of equipment rental rates, union rate cards, and past production budgets to generate tiered budget options. | |
+| **GitHub API** | **Version Control and Committing** of documents. | Version Control Agent. | Handles auto-commits, tracking development history, and enabling document comparison. | |
+
+The ultimate goal of this complex architecture and data scheme is to process user input, like a 15-minute voice dump, and transform it into structured data, ensuring that every note is categorized (e.g., technical requirement, to-do list item, shot list addition) and routed to the correct agent for autonomous processing, enabling a script to be shoot-ready in just 24 hours.
+
+---
+
+We have broken down the precise technical contracts that allow your AI ecosystem to function. Would you like to now explore how the **Multimodal Vision Agent** specifically processes location photos using the Qwen2-VL model to generate lighting diagrams, or perhaps review the parallel processing instructions given to the **Claude Code instances**?
+
+The technical implementation of the Multimodal Vision Agent, its integration with specialized models like Qwen and Molmo, and the detailed instructions provided to the parallel **Claude Code instances** are foundational to achieving the system's goal of compressing cinematography preparation time from weeks into hours.
+
+### 1. The Multimodal Vision Agent (Eagle-Eye) and RunPod Integration
+
+The **Multimodal Vision Agent** (also known as the **Eagle-Eye Agent** or **Location Analysis Agent**) is critical for translating complex visual data—such as location photos and reference images—into actionable technical and creative notes.
+
+#### Technology and Deployment
+
+This agent requires significant computational power, making it reliant on specialized infrastructure:
+
+*   **Infrastructure:** The Multimodal Vision Agent runs on **RunPod GPU Instances**. These GPU instances, potentially using high-end cards like the A100 or RTX 4090, are necessary to run large, open-source multimodal models efficiently.
+*   **Model Selection (Qwen and Alternatives):** The system specifically prioritizes newer open-source multimodal models that are evaluated as being **better than Gemini 2.5 Pro** at visual analysis. Key candidates for deployment include:
+    *   **Qwen2-VL-72B / Qwen3-VL-235B:** These models are selected for their **excellent visual reasoning** and strong spatial understanding capabilities.
+    *   **Molmo:** This model is targeted specifically for its **pointing capability**. This unique feature allows the agent to visually indicate specific areas in images, such as **rigging points** or **motivated light sources**, providing highly specific feedback to the G&E teams.
+    *   **InternVL 2.0/3.0** and **LLaVA-NeXT** are also noted as strong alternatives for spatial understanding and detailed image analysis.
+
+#### Core Functions and Use Cases
+
+The agent processes visual input (often **location-tagged photos**) and turns it into structured data for other agents:
+
+1.  **Location Analysis:** Analyzes location photos to assess lighting conditions (quality, direction, time of day), space dimensions, angles, and composition. It can generate **lighting diagrams** and identify **practical lighting opportunities**.
+2.  **Reference Breakdown:** It can analyze reference images to identify and describe the technical setup, such as estimating focal length, depth of field, and the overall composition breakdown.
+3.  **Coordination:** It flags obstacles, power availability, rigging points (using pointing capability), and potential Art Department needs based on the location's visual characteristics.
+
+### 2. Instructions Given to Claude Code Instances
+
+The fundamental implementation strategy is to achieve a compressed timeline of **hours, not weeks**, by running **multiple Claude Code instances** simultaneously and dedicating each instance to a specific part of the architecture.
+
+#### Parallel Development Strategy
+
+Development is broken down into parallel tasks distributed across several Claude Code instances (as shown in the implementation roadmap phases):
+
+| Claude Code Instance | Primary Focus and Agents | Implementation Tasks | Citations |
+| :--- | :--- | :--- | :--- |
+| **Instance 1: Core Foundation** | **Master Orchestrator**, Core Infrastructure. | **Set up Firebase project** (Firestore/Storage), initialize **Git/GitHub** repository, deploy the base Claude SDK agent framework, implement logging and configuration. | |
+| **Instance 2: Input & Voice Pipeline** | **Voice Transcription Agent (Listen-Well)**, Script Ingestion Agent. | Integrate **Whisper for Mac** (local processing) or run open-source models on **RunPod**. Implement **smart routing** of transcripts (e.g., classifying notes into shot list additions or to-do items). | |
+| **Instance 3: Creative Analysis** | **Story Expert Agent (Story Sage)**, **Visual Language Agent**. | Encode cinematography theory (e.g., **5 Cs of Cinematography**, Bruce Block's *Visual Story*). Implement multiple script reading passes (emotion, structure, themes, visual opportunities). | |
+| **Instance 4: Technical & Logistics** | **Budget Expert Agent**, **Gear List Generator Agent**. | Build functionality to calculate budgets using **actual real numbers** (based on vendor rates and past project data). Implement the generation of comprehensive gear lists (Camera, G&E). | |
+| **Instance 5: Multimodal Service** | **Multimodal Vision Agent (Eagle-Eye)**. | Deploy **Qwen2-VL-72B** (or similar) on **RunPod GPU instances**. Implement the **pointing capability** and visual analysis pipeline. | |
+| **Instance 6: Management & Output** | **Task Management Agent (Task Tracker)**, **Communication Agent**. | Implement **AuDHD Optimization** features (respecting peak focus times and limiting major tasks to 2-3 per day). Build email drafting capabilities (future **Gmail API** integration planned). | |
+
+#### Agent Communication and Data Flow
+
+All parallel agents must adhere to strict communication standards to integrate successfully:
+
+1.  **Communication Format:** Agents communicate using structured **JSON** messages, which define the input required, the expected output, and the triggering conditions.
+2.  **Shared State Management:** The state of the workflow and all generated data are stored in **Google Firebase** (Firestore/Storage). This allows multiple Claude Code instances working in parallel to read the latest output from a preceding agent (e.g., the Budget Agent accessing the gear list created by the Gear List Agent).
+3.  **Version Control:** The **Version Control Agent** ensures that all document iterations and code changes resulting from the parallel work are committed to **Git/GitHub** for traceability and history tracking. This allows comparison between document versions, such as Shot List v1 versus v4.
+
+---
+
+We have reviewed how the specialized multimodal vision models, such as Qwen and Molmo, are deployed on RunPod and detailed the parallel work instruction for the Claude Code instances. Would you now like a deeper look into the comprehensive **Shot List Scheme** used to organize technical data, leveraging inputs from all these parallel agents?
+
+The Shot List Scheme within the cinematography assistant application is designed to be comprehensive, incorporating creative vision, technical specifications, and production logistics. It merges elements from formal cinematography planning documents with structured data fields necessary for autonomous agent processing and collaboration.
+
+The core structure of the Shot List is derived from industry-standard prep documents, ensuring that every element required by the camera, grip, and electric departments is detailed. The **Shot List Architect Agent** (or **Shot List Generator Agent**) is responsible for creating and managing this document, often generating multiple versions (ideal, realistic, emergency).
+
+Here is the full, detailed scheme, combining the necessary fields for a complex production document:
+
+### Comprehensive Shot List Data Scheme
+
+| Field Category | Key Fields and Notes | Purpose and Content Detail | Responsible Agents/Source Context | Citations |
+| :--- | :--- | :--- | :--- | :--- |
+| **Scene Identification** | **Sc #** (Scene Number) | Identifies the script scene number. | Script Ingestion Agent, Shot List Architect Agent. | |
+| | **Shot No.** | Unique identifier for the individual shot within the scene. | Shot List Architect Agent. | |
+| | **Name / Description** | A longer description or name for the shot, including the action, subject, or character focus. | Shot List Architect Agent. | |
+| | **Action / Subject / Character / Important** | Specific details about what the camera is seeing or what action is occurring (e.g., "CU on Fist pan and track to MED on KJ reveal," "Fist punching the ground"). | Story Expert Agent, Shot List Architect Agent. | |
+| **Location & Time** | **INT/EXT Location** | Specifies Interior or Exterior and the location name (e.g., EXT BACKYARD - SAXTON FAMILY HOME). | Script Ingestion Agent, Shot List Architect Agent. | |
+| | **Time D/N** | Day (D) or Night (N) designation for the scene. | Script Ingestion Agent. | |
+| | **Time of Day** | Detailed time of day/lighting condition (e.g., white (DI), yellow (DE), green (NI), blue (NE), orange (EVE)). | Script Ingestion Agent, Visual Language Agent. | |
+| | **Story Day / Shoot Date** | Contextual information: Day in the story timeline and the planned shooting date. | Task Management Agent, Collaboration Agent. | |
+| | **Est Time / Minutes per Shot** | Estimated time required to complete the setup and execution, crucial for scheduling. | Shot List Architect Agent, Schedule Harmonizer Agent. | |
+| **Camera and Movement** | **Camera Description / Size** | Framing size (e.g., CU, MED, WIDE, ECU, TWO Shot) and camera description/framing angle (e.g., Low frontal, High Angle, Profile). | Visual Language Agent, Shot List Architect Agent. | |
+| | **Angle** | Specifies the camera angle (e.g., Low angle, High angle). | Visual Language Agent. | |
+| | **Move Notes / Movement** | Details the camera movement (e.g., steadicam, dolly, sticks, static, pan and track, ZOOM out, rack focus, arc). | Shot List Architect Agent, Technical Planning Agent. | |
+| | **Camera Notes / Lens** | Specific technical notes, including lens choice (mm or description), camera selection (e.g., Phantom Camera?), and filtration (e.g., streak filter, flare the lens). | Equipment Intelligence Agent. | |
+| **Grip, Electric, and FX** | **Lighting Notes** | Specific lighting needs, units, gels, mood, color temperature progression, and practical notes. | Lighting & Grip Agent, Visual Language Agent. | |
+| | **Grip Notes** | Details specialty grip equipment (e.g., hi hat on ladder, dolly super pee wee or cobra, scissor track). | Equipment Intelligence Agent. | |
+| | **SFX / VFX** | Requirements for special or visual effects (e.g., vfx, stunts, spfx fog, vfx black phone white markers / stabilize, paint out camera, spfx dust). | Script Ingestion Agent, Collaboration Agent. | |
+| **Creative & Logistics**| **Director Notes** | Notes from the director regarding the shot or scene (e.g., dialogue, impressed and watching Kick). | Voice Transcription Agent, Collaboration Agent. | |
+| | **Reference / Important Questions** | Notes regarding continuity or character details ("should reflection wear durag?"), art department needs ("art department potentially remove door"), or references. | Story Expert Agent, Collaboration Agent. | |
+| | **Type** | Classification of the shot (e.g., Essential, Master). | Shot List Architect Agent. | |
+
+### Key Implementation Notes
+
+1.  **Version Control:** The Shot List document is subject to change, tweak, and evolve right up until filming. The **Version Control Agent** automatically commits all document versions to Git/GitHub, allowing comparison between versions (e.g., comparing shot list v1 vs v4) and tracking how decisions evolved.
+2.  **Voice Integration:** Shot list additions and changes are often captured via voice dumps. The **Voice Transcription Agent** sorts these conversational notes into actionable items tagged for the shot list, ensuring that director and DP feedback is immediately incorporated.
+3.  **Technical Data:** The system ensures compatibility by incorporating highly technical details like specific camera systems (Phantom Camera), lighting notes (spfx fog), and grip gear (Super Peewee, scissor track).
+4.  **AuDHD Optimization:** The Shot List Architect generates **multiple shot list versions** (ideal, realistic, emergency) and includes **estimated time per shot**. This transparency helps manage executive function demands by clearly defining scope and time constraints.
+
+---
+
+We have reviewed the extensive data schema used to build the shoot-ready shot list. Would you like to now examine the **Budget Expert Agent's** data structure, which uses the output of the shot list and gear lists to generate the "actual real numbers" for the production?
+
+The Budget Expert Agent, also known as the **Money Manager** or **Budget Agent**, serves as your financial planning specialist within the CINÉ-MIND system, focused on translating the creative vision into financially viable production plans. Its primary objective is to generate accurate, detailed budgets for the cinematography, grip, and electric departments using **actual real numbers**.
+
+### Core Functions and Budget Components
+
+The agent is designed not only to create high-level budgets but also to **drill down** to provide specific, verifiable costs for equipment and labor. The specific components budgeted include:
+
+1.  **Camera Department Costs:** This covers camera body rentals, lens packages, support systems (like dollies and jibs), media, data management, and DIT setup.
+2.  **Grip & Electric (G&E) Costs:** This includes lighting units, grip equipment, power distribution, and **expendables**.
+3.  **Personnel:** The agent calculates accurate **day rates** for the crew and anticipates potential **overtime calculations** and kit rentals.
+
+### Knowledge Base and Intelligence
+
+The Budget Expert Agent leverages a dynamic and comprehensive knowledge base to ensure realism and strategic decision-making:
+
+*   **Financial Templates:** It is trained on **Standard film budget templates**, specifically utilizing the format similar to the **David Claesson template structure**.
+*   **Real-World Pricing:** It connects to vendor APIs or proprietary databases to pull current **equipment rental rates** and **vendor pricing**.
+*   **Historical Data:** It learns from your **past production budgets**, allowing it to generate budgets based on actual experience and performance.
+*   **Market Awareness:** It knows **Union rate cards** and is aware of **regional rate variations** (e.g., LA/NY/ATL market rates).
+
+### Strategic Outputs and Financial Planning
+
+Beyond simple calculation, the agent provides strategic financial intelligence:
+
+*   **Tiered Budgeting:** It generates **tiered budget options** (e.g., ideal, realistic, minimal) to align the creative vision with financial constraints.
+*   **Cost Optimization:** The agent actively suggests **cost-saving alternatives** and flags potential budget risks to maintain financial viability.
+*   **Detailed Reporting:** Outputs include **detailed line-item budgets**, summary sheets, department breakdowns, and budget comparison spreadsheets.
+
+This agent works in direct integration with the **Visual Language Agent** to confirm the creative approach is financially viable and with the **Gear List Generator Agent** to price out the necessary equipment.
+
+---
+
+Since the Budget Expert Agent relies heavily on precise equipment requirements, would you like to delve into the data structure and intelligence of the **Equipment Intelligence Agent (Gear Guru)**, which specifies the exact camera, grip, and electric packages needed?
+
+The technical implementation details regarding equipment and gear are managed primarily by the **Equipment Intelligence Agent (Gear Guru)** and the **Technical Specifications Agent**. These agents translate the abstract visual needs developed by the creative agents into comprehensive, costed, and actionable equipment lists using "actual real numbers".
+
+Here is a detailed dive into the equipment specification process and the types of gear handled by the system:
+
+### 1. Equipment Intelligence Agent (Gear Guru)
+
+The **Gear List Generator Agent** works closely with the **Budget Expert Agent** to produce reliable and accurate equipment packages.
+
+#### Core Capabilities and Intelligence:
+
+*   **Gear List Generation:** The agent creates lists for the Camera, Grip, and Electric departments.
+*   **Knowledge Base:** It utilizes a database containing **actual equipment rental rates**, specs, and your past production budgets to add intelligence and suggest improved recommendations.
+*   **Compatibility Checking:** The system checks compatibility between camera bodies, lenses, and accessories.
+*   **Output Formatting:** Gear lists are generated using recognizable formats, such as the **David Claesson template structure**.
+*   **Costing and Tiers:** It generates multiple budget tiers (Premium, Standard, Budget) and compares vendor pricing.
+
+#### Integration with Other Agents:
+
+The Equipment Intelligence Agent takes input from several creative and technical agents:
+
+1.  **Visual Language Agent:** Provides creative decisions like **Anamorphic vs. Spherical**, movement philosophy, and lighting approach (e.g., LED-heavy or pushing through frames).
+2.  **Shot List Architect Agent:** Specifies the shots requiring **Special Equipment**, such as a Steadicam, a dolly (like the Super Peewee or cobra), jibs, cranes, or the **Phantom Camera** for slow motion.
+3.  **Budget Expert Agent:** Prices the generated gear lists using **actual real numbers**.
+
+### 2. Specific Gear Categories Handled by the System
+
+The system manages specifications across all major technical departments, prioritizing details to ensure the **entire camera package** is specified.
+
+| Gear Category | Specific Equipment or Configuration Details | Source Context |
+| :--- | :--- | :--- |
+| **Camera Bodies** | **Alexa Mini**, **Alexa 35** (if budget allows), **Phantom Camera** for slow-motion shots, and larger format systems. | |
+| **Lenses & Format** | **Anamorphic Primes** + **Two Zooms** (long and short), **Spherical lens sets**, **Tilt Shift** lenses, **Cooke S4 Minis** or **Zeiss Super Speeds**, **Blackwing** lenses (Tribe 7), and **customized lenses**. | |
+| **Filtration** | **Diffusion, ND**, **Special Effects Filters** like **streak filter** or **flare lens**, and **split diopters**. | |
+| **Movement/Support** | **Steadicam**, **dolly** (e.g., **Dana Dolly**, **Super Peewee** or **cobra**), **scissor track**, **cranes/jibs**, **hi hat on ladder**, and various **gimbals**. | |
+| **Lighting Units** | **Skypanels**, **Litemats**, **LED tubes**, **big units for pushing through frames and night work**, **Aputure MC** (for set dressing), **condors**, **balloons**, and **Luminaire** or **Wireless DMX/Ratpac** for light control. | |
+| **Grip Gear** | **Grip Clouds**, **Helium**, **Lift**, and comprehensive packages tracked against the capacity of the **Grip Truck**. | |
+
+### 3. Collaboration and Logistics
+
+The system’s goal is to ensure the **entire gear package** is specified early in the **DP Prep Process** (often 2 weeks before production) so that the **Gaffer, Key Grip, and 1st AC** can lock things down.
+
+*   **Prep Activities:** The system generates tasks like selecting gear, confirming crane or hiring Steadicam, checking the dolly order, and ensuring the **gear list for Kim** is ready.
+*   **Vendor Coordination:** The agent tracks necessary vendors like **Panavision, Keslow, Otto Nemenz**, and manages quotes and specs for items like a **Boom Lift** or the **Jib**.
+*   **Crew Requirements:** The Gear List Agent works with the Budget Agent to estimate crew staffing (DP, Operator, 1st AC, 2nd AC, Loader, DIT, Gaffer, Key Grip, etc.). It can also flag the need for specialized crew on certain days, such as **rigging crew** or specialized operators.
+
+---
+
+We have thoroughly detailed the equipment packages and logistical specifications managed by the CINÉ-MIND system. Would you be interested in exploring the specific data and intelligence that the **Knowledge Base Manager Agent** uses to learn from past projects and inform these precise equipment and budget decisions?
+
+The technical implementation for managing equipment and gear relies heavily on the **Equipment Intelligence Agent (Gear Guru)** and the **Technical Planning Agent**, which collectively translate the creative vision into comprehensive, costed, and actionable equipment packages using "actual real numbers".
+
+### 1. Equipment Intelligence Agent (Gear Guru) and Knowledge Base
+
+The **Gear List Agent** or **Equipment Intelligence Agent** is responsible for specifying the exact tools needed across departments, ensuring technical compatibility and financial viability:
+
+*   **Knowledge Foundation:** The agent utilizes a comprehensive knowledge base that includes **standard budget templates**, **up-to-date equipment rental rates**, union rate cards, and your **past production budgets** to add intelligence to its suggestions. This enables it to generate realistic costs for gear.
+*   **Technical Compatibility:** It performs crucial checks for **compatibility** between camera bodies, lenses, and accessories.
+*   **Output Formatting:** Gear lists are structured to be production-ready, often using established industry formats such as the **David Claesson template structure**.
+*   **Budget Tiers:** The agent generates gear recommendations for **multiple budget tiers** (e.g., Premium, Standard, Budget) and compares vendor pricing.
+
+### 2. Detailed Technical Specifications and Gear Categories
+
+The system manages specifications that range from creative character to precise physics calculations:
+
+| Gear Category | Specific Technical Specifications Handled | Citations |
+| :--- | :--- | :--- |
+| **Camera Bodies & Format** | Recommends specific bodies (e.g., **Phantom Camera** for slow motion) and determines formats like **Aspect Ratio**, **frame rate**, and **film vs digital**. | |
+| **Lenses & Optics** | Defines choices like **Anamorphic vs. Spherical**, specific lens sets (e.g., **Cooke S4 Minis** or **Zeiss Super Speeds**), and technical characteristics such as **chromatic and spherical aberration**, **contrast**, **flare**, **distortion**, and **depth of field**. | |
+| **Filtration & Settings** | Specifies **Filtration** (Diffusion, ND, **Special Effects Filters** like streak or glare), and suggests **exposure determinations** and **f-stop** settings. | |
+| **Support & Movement** | Specifies specialty support systems like **Steadicam**, **cranes/jibs**, **dolly** equipment (including **Super Peewee** or **cobra**, **scissor track**), **gimbals**, and even specific rigging like **hi hat on ladder**. | |
+| **Grip & Electric** | Generates lists for **lighting units** and **gels**, power distribution, and specialty grip equipment such as **Grip Clouds**, **Helium**, and **Lift**. It anticipates the need for **condors** or **balloons** for night work. | |
+
+### 3. Logistical Integration into the Prep Process
+
+The **Gear List Agent** feeds directly into the larger production workflow by generating necessary administrative and logistical tasks:
+
+*   **Prep Task Generation:** It flags tasks within the **DP Prep Process** such as checking the **dolly order**, arranging **equipment pickup**, and determining whether to **Confirm Crane or Hire Steadicam**.
+*   **Communication:** The resultant gear lists, formatted appropriately (e.g., the **David Claesson template**), are packaged by the **Communication Agent** and sent to the **Gaffer**, **Key Grip**, and **1st AC** to "lock things down".
+*   **Testing:** The lists necessitate the scheduling of **Camera/Lens/Filter Tests** to confirm that the selected gear achieves the desired **aesthetic of the film**.
+
+---
+
+We have thoroughly documented the gear selection and technical specification process. Would you now be interested in exploring the specific data structures and intelligence used by the **Task Management Agent** to provide **AuDHD Optimization** and support your executive function during this complex prep workflow?
+
+The **Task Management Agent** (also known as the **Task Tracker**, **kanban-master**, or **Task Orchestrator**) is designed as your **external brain** and **executive function support system**. Its implementation is focused on **AuDHD Optimization**, specifically engineered to counter the challenges of executive dysfunction and cognitive load, enabling you to reduce preparation time and adhere to an 8-hour work week limit.
+
+### AuDHD Optimization and Core Intelligence
+
+The Task Management Agent's intelligence incorporates specific rules derived from neurodivergent workflow optimization:
+
+1.  **Task Limitation:** The system adheres to an optimization protocol that limits you to a **maximum of 2-3 major tasks per day**. This prevents cognitive overload and respects the boundary of the 8-hour work week.
+2.  **Energy-Aware Scheduling:** It tracks deadlines and prioritizes tasks while respecting **peak focus times**. For instance, complex creative work (like visual treatment refinement or director calls) may be suggested for the **11 AM–1 PM window** if that is identified as a peak energy time.
+3.  **Hyperfocus Management:** The agent provides **hyperfocus protection** by capturing overflow ideas and to-dos from your voice dumps automatically, allowing you to "dump and forget" and remain in flow.
+4.  **Task Decomposition and Buffers:** The system specializes in executive function support by breaking large, complex prep items (like "Finalize Gear List") into **manageable chunks**. It also accounts for **transition costs** between contexts and may recommend 20-30 minute buffers between dissimilar tasks.
+5.  **Workflow Tracking:** It uses a comprehensive checklist based on your **Standard DP Prep Process** (e.g., Read Script / Review Boards, Pull References, Confirm Crane or Hire Steadicam, Check Dolly Order) and tracks completion against milestones.
+
+### Task Management Data Scheme
+
+The data structure for each task ensures all necessary context and logistical requirements are maintained:
+
+| Task Field | Purpose and Content Detail | Responsible Agent/Layer | Citations |
+| :--- | :--- | :--- | :--- |
+| **Task Name** | Specific action item (e.g., Request Dolly, Check on Jib utility, Prep Document). | Task Manager Agent. | |
+| **Priority/Urgency** | Classification based on deadline proximity and dependency (Critical, High, Medium, Low). | Task Orchestrator. | |
+| **Status** | Tracks progress (To-Do, In Progress, Complete, Blocked). | Task Manager Agent. | |
+| **Dependencies** | Identifies tasks that must be completed before this one can start (e.g., Gear List must be finished before Budget Expert can run). | Collaboration Agent/Orchestrator. | |
+| **Focus Time Flag** | Indicates if the task requires peak cognitive resources, aligning with AuDHD optimization. | Task Manager Agent. | |
+| **Source Context** | Notes where the task originated (Voice Dump, Director Meeting, Script Analysis, etc.). | Voice Transcription Agent. | |
+| **Integration** | Specifies where the task syncs (e.g., iOS Reminders, Google Calendar events, Asana). | Task Manager Agent. | |
+
+The system uses this scheme to automatically generate your daily to-do lists, ensuring you address the most critical creative and logistical items while protecting your focused work hours.
+
+---
+
+We have now seen how the system manages your time and executive function. To understand how the system executes its parallelized workflow so rapidly, would you like a breakdown of the specific instructions given to the multiple **Claude Code instances** and the **Workflow State Machine** that governs agent communication?
+
+The technical implementation involves highly specialized compute infrastructure for visual processing and a unique parallel development strategy using multiple AI instances for rapid construction.
+
+### 1. Multimodal Vision Agent (Eagle-Eye) and RunPod Integration
+
+The **Multimodal Vision Agent** (referred to as the **Eagle-Eye Agent**) is the system's specialized visual intelligence engine, requiring significant GPU compute resources to handle complex image analysis:
+
+*   **Compute Infrastructure:** This agent runs primarily on **RunPod GPU Instances**. This infrastructure is vital for the intensive processing demands of multimodal models. The agent's deployment requires installing models on a RunPod server instance, potentially utilizing high-performance GPUs.
+*   **Model Selection:** The system uses specific open-source multimodal models chosen because they are evaluated as being **better than Gemini 2.5 Pro** at visual analysis.
+    *   **Qwen2-VL-72B / Qwen3-VL-235B** are primary candidates due to their **excellent visual reasoning** and spatial understanding.
+    *   The model **Molmo-72B** is specifically targeted for its **pointing capability**, allowing the system to visually indicate features like **rigging points** or **motivated light sources** directly on location photos.
+    *   Other strong candidates include **InternVL 2.0** and **LLaVA-NeXT**.
+*   **Core Functions:** The agent analyzes location photos (often **location-tagged photos** from your phone) and uses the multimodal model to:
+    *   Analyze lighting conditions (time of day, quality, direction).
+    *   Assess space dimensions and composition.
+    *   Generate lighting diagrams and identify practical light sources.
+    *   Flag physical constraints and power availability.
+
+### 2. Parallel Claude Code Implementation Instructions
+
+The implementation achieves rapid development—reducing weeks of work to **hours**—by using multiple **Claude Code instances** in parallel.
+
+#### Parallel Distribution Strategy
+
+Development tasks are broken down into self-contained modules assigned to separate instances:
+
+| Claude Code Instance | Primary Focus and Agents | Implementation Tasks and Goals | Citations |
+| :--- | :--- | :--- | :--- |
+| **Instance 1: Core Infrastructure** | **Master Orchestrator Agent**, Infrastructure | Set up **Firebase** and **GitHub** repositories, deploy the base Claude SDK framework, and implement core routing logic. | |
+| **Instance 2: Input Pipeline** | **Voice Transcription Agent**, Script Ingestion | Integrate **Whisper for Mac** (local processing) or the Whisper API/RunPod fallback. Implement action item extraction and content routing. | |
+| **Instance 3: Creative Core** | **Story Expert Agent**, **Visual Language Agent** | Encode cinematography theory (e.g., **5 Cs of Cinematography**, Bruce Block's *Visual Story*) and implement multiple script analysis passes. | |
+| **Instance 4: Technical Logistics** | **Budget Expert Agent**, **Gear List Generator Agent** | Build modules for calculating budgets using **actual real numbers**, integrating equipment pricing databases, and generating comprehensive gear lists. | |
+| **Instance 5: Multimodal Service** | **Multimodal Vision Agent** | Deploy **Qwen2-VL-72B** or similar on **RunPod GPU Instances**. Implement the visual analysis and **pointing capability** protocols. | |
+| **Instance 6: Management & Output** | **Task Management Agent**, **Communication Agent** | Implement **AuDHD Optimization** logic (e.g., max 2-3 major tasks per day), and draft all external communications. | |
+
+#### Agent Coordination and Protocols
+
+All parallel instances must adhere to strict protocols for coordination and state management:
+
+1.  **Communication Format:** Agents communicate using structured **JSON** objects, defining input, output, and triggering conditions.
+2.  **Shared State:** The entire project state and context are stored in **Google Firebase** (Firestore/Storage), allowing agents working simultaneously to read and update the project's current status.
+3.  **Version Control:** The **Version Control Agent** ensures that all documents generated by the parallel instances are committed to **Git/GitHub**, providing complete traceability and enabling document comparison (e.g., Shot List v1 vs v4).
+
+---
+
+We have reviewed the cutting-edge AI integration via RunPod and the accelerated, parallel development strategy. Would you be interested in seeing the detailed data structure of the **Task Management Agent** to understand how it supports your executive function, or perhaps an overview of the full **Implementation Roadmap** detailing the weekly build schedule?
