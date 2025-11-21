@@ -1,0 +1,673 @@
+# Vision Vault Document Classification System
+# Comprehensive taxonomy for all production documents
+
+version: "1.0.0"
+last_updated: "2025-03-01"
+
+categories:
+  creative:
+    name: "Creative Documents"
+    description: "Documents related to creative vision, storytelling, and artistic direction"
+    color: "#9C27B0"  # Purple
+    priority: "high"
+    types:
+      - name: "Script"
+        description: "Screenplay or teleplay"
+        extensions: [".fdx", ".pdf", ".docx"]
+        typical_software: ["Final Draft", "WriterDuet", "Celtx"]
+        metadata_requirements: ["scene_count", "page_count", "revision_color"]
+
+      - name: "Treatment"
+        description: "Extended story outline"
+        extensions: [".docx", ".pdf"]
+        typical_software: ["Word", "Google Docs"]
+
+      - name: "Character Bible"
+        description: "Character backgrounds and development"
+        extensions: [".docx", ".pdf"]
+
+      - name: "Concept Art"
+        description: "Visual development artwork"
+        extensions: [".jpg", ".png", ".psd", ".ai"]
+        typical_software: ["Photoshop", "Procreate", "Illustrator"]
+
+      - name: "Storyboard"
+        description: "Shot-by-shot visual planning"
+        extensions: [".pdf", ".psd", ".storyboardpro"]
+        typical_software: ["Storyboard Pro", "Photoshop", "FrameForge"]
+
+      - name: "Lookbook"
+        description: "Visual reference collection"
+        extensions: [".pdf", ".indd", ".pptx"]
+        typical_software: ["InDesign", "PowerPoint", "Keynote"]
+
+      - name: "Mood Board"
+        description: "Thematic visual references"
+        extensions: [".pdf", ".jpg", ".png"]
+
+      - name: "Shot List"
+        description: "Planned camera setups"
+        extensions: [".xlsx", ".pdf", ".csv"]
+        typical_software: ["StudioBinder", "Excel", "Google Sheets"]
+
+      - name: "Music References"
+        description: "Temp tracks and style guides"
+        extensions: [".mp3", ".wav", ".pdf"]
+
+  technical:
+    name: "Technical Documents"
+    description: "Technical specifications, diagrams, and equipment documentation"
+    color: "#2196F3"  # Blue
+    priority: "high"
+    types:
+      - name: "Camera Report"
+        description: "Technical shot information"
+        extensions: [".xlsx", ".pdf"]
+        typical_software: ["Excel", "StudioBinder"]
+        metadata_requirements: ["camera_model", "lens", "framerate", "codec"]
+
+      - name: "Lighting Diagram"
+        description: "Technical lighting plan"
+        extensions: [".pdf", ".dwg", ".vwx"]
+        typical_software: ["Vectorworks", "AutoCAD", "SketchUp"]
+
+      - name: "Equipment List"
+        description: "Gear and technical specifications"
+        extensions: [".xlsx", ".pdf"]
+
+      - name: "Tech Scout Report"
+        description: "Location technical assessment"
+        extensions: [".docx", ".pdf"]
+        metadata_requirements: ["location_id", "power_availability", "access_notes"]
+
+      - name: "Lens Tests"
+        description: "Camera and lens test results"
+        extensions: [".pdf", ".xlsx", ".mov"]
+
+      - name: "Color Pipeline"
+        description: "Color management workflow"
+        extensions: [".pdf", ".cube", ".3dl"]
+
+      - name: "Workflow Chart"
+        description: "Process and data flow documentation"
+        extensions: [".pdf", ".vsd", ".lucid"]
+        typical_software: ["Visio", "Lucidchart", "Miro"]
+
+      - name: "Signal Flow"
+        description: "Audio/video connection documentation"
+        extensions: [".pdf", ".vsd"]
+
+      - name: "Power Distribution"
+        description: "Electrical planning"
+        extensions: [".pdf", ".dwg"]
+
+  logistical:
+    name: "Logistical Documents"
+    description: "Scheduling, coordination, and operational documents"
+    color: "#FF9800"  # Orange
+    priority: "critical"
+    types:
+      - name: "Call Sheet"
+        description: "Daily shooting schedule"
+        extensions: [".pdf", ".docx"]
+        typical_software: ["StudioBinder", "Scenechronize", "Movie Magic"]
+        metadata_requirements: ["shoot_date", "call_time", "weather"]
+
+      - name: "Production Schedule"
+        description: "Overall timeline"
+        extensions: [".xlsx", ".pdf", ".mms"]
+        typical_software: ["Movie Magic Scheduling", "StudioBinder"]
+
+      - name: "Day Out of Days"
+        description: "Cast scheduling overview"
+        extensions: [".xlsx", ".pdf"]
+
+      - name: "Location Map"
+        description: "Site maps and directions"
+        extensions: [".pdf", ".kml", ".jpg"]
+
+      - name: "Crew List"
+        description: "Team contact information"
+        extensions: [".xlsx", ".pdf"]
+
+      - name: "Vendor List"
+        description: "Supplier and service information"
+        extensions: [".xlsx", ".pdf"]
+
+      - name: "Travel Itinerary"
+        description: "Transportation arrangements"
+        extensions: [".xlsx", ".pdf"]
+
+      - name: "Run of Show"
+        description: "Event or sequence timing"
+        extensions: [".xlsx", ".docx"]
+
+      - name: "Production Report"
+        description: "Daily progress summary"
+        extensions: [".pdf", ".xlsx"]
+        metadata_requirements: ["shoot_date", "scenes_completed", "hours_worked"]
+
+  financial:
+    name: "Financial Documents"
+    description: "Budget, cost tracking, and financial management"
+    color: "#4CAF50"  # Green
+    priority: "critical"
+    confidentiality: "restricted"
+    types:
+      - name: "Budget"
+        description: "Cost planning and tracking"
+        extensions: [".xlsx", ".mmb", ".pdf"]
+        typical_software: ["Movie Magic Budgeting", "Excel"]
+        metadata_requirements: ["budget_version", "total_amount", "department_breakdown"]
+
+      - name: "Cost Report"
+        description: "Spending analysis"
+        extensions: [".xlsx", ".pdf"]
+
+      - name: "Purchase Order"
+        description: "Authorized purchases"
+        extensions: [".pdf", ".xlsx"]
+        metadata_requirements: ["po_number", "vendor", "amount"]
+
+      - name: "Cash Flow"
+        description: "Financial timing projection"
+        extensions: [".xlsx", ".pdf"]
+
+      - name: "Petty Cash Log"
+        description: "Small expense tracking"
+        extensions: [".xlsx", ".pdf"]
+
+      - name: "Invoice Tracker"
+        description: "Billing management"
+        extensions: [".xlsx", ".pdf"]
+
+      - name: "Labor Report"
+        description: "Crew hours and costs"
+        extensions: [".xlsx", ".pdf"]
+        metadata_requirements: ["pay_period", "department", "total_hours"]
+
+  legal:
+    name: "Legal Documents"
+    description: "Contracts, releases, permits, and compliance documentation"
+    color: "#F44336"  # Red
+    priority: "critical"
+    confidentiality: "restricted"
+    retention_period: "permanent"
+    types:
+      - name: "Contract"
+        description: "Legal agreements"
+        extensions: [".pdf", ".docx"]
+        metadata_requirements: ["party_names", "contract_type", "effective_date", "expiration_date"]
+
+      - name: "Release Form"
+        description: "Permissions documentation"
+        extensions: [".pdf"]
+        metadata_requirements: ["signatory", "release_type", "date_signed"]
+
+      - name: "Insurance Certificate"
+        description: "Coverage documentation"
+        extensions: [".pdf"]
+
+      - name: "Permit"
+        description: "Shooting authorization"
+        extensions: [".pdf"]
+        metadata_requirements: ["permit_type", "location", "valid_dates"]
+
+      - name: "Clearance Report"
+        description: "Rights verification"
+        extensions: [".pdf", ".docx"]
+
+      - name: "NDA"
+        description: "Confidentiality agreement"
+        extensions: [".pdf"]
+
+      - name: "Deal Memo"
+        description: "Employment terms"
+        extensions: [".pdf", ".docx"]
+
+  planning:
+    name: "Planning Documents"
+    description: "Breakdown, preparation, and planning materials"
+    color: "#00BCD4"  # Cyan
+    priority: "high"
+    types:
+      - name: "Script Breakdown"
+        description: "Scene elements analysis"
+        extensions: [".xlsx", ".pdf"]
+        typical_software: ["Movie Magic Scheduling", "StudioBinder"]
+
+      - name: "Prop List"
+        description: "Required props inventory"
+        extensions: [".xlsx", ".pdf"]
+
+      - name: "Wardrobe Breakdown"
+        description: "Costume planning by scene"
+        extensions: [".xlsx", ".pdf"]
+
+      - name: "Scene Breakdown"
+        description: "Detailed scene requirements"
+        extensions: [".xlsx", ".pdf"]
+        metadata_requirements: ["scene_number", "location", "cast", "special_requirements"]
+
+      - name: "Risk Assessment"
+        description: "Safety and contingency planning"
+        extensions: [".pdf", ".docx"]
+
+      - name: "Construction Schedule"
+        description: "Build timeline"
+        extensions: [".xlsx", ".pdf", ".mpp"]
+        typical_software: ["Microsoft Project", "Excel"]
+
+      - name: "Prep Schedule"
+        description: "Pre-production timeline"
+        extensions: [".xlsx", ".pdf"]
+
+  communication:
+    name: "Communication Documents"
+    description: "Notes, memos, briefings, and inter-departmental communication"
+    color: "#795548"  # Brown
+    priority: "medium"
+    types:
+      - name: "Meeting Notes"
+        description: "Discussion documentation"
+        extensions: [".docx", ".pdf", ".gdoc"]
+        metadata_requirements: ["meeting_date", "attendees", "topics"]
+
+      - name: "Department Brief"
+        description: "Team instructions"
+        extensions: [".docx", ".pdf"]
+
+      - name: "Creative Brief"
+        description: "Direction guidance"
+        extensions: [".docx", ".pdf", ".pptx"]
+
+      - name: "Daily Brief"
+        description: "Day's priorities and notes"
+        extensions: [".pdf", ".docx"]
+
+      - name: "Change Order"
+        description: "Alteration documentation"
+        extensions: [".pdf", ".docx"]
+        metadata_requirements: ["change_date", "affected_departments", "reason"]
+
+  review:
+    name: "Review & Approval Documents"
+    description: "Feedback, notes, and approval documentation"
+    color: "#9E9E9E"  # Gray
+    priority: "high"
+    types:
+      - name: "Director's Notes"
+        description: "Creative feedback"
+        extensions: [".docx", ".pdf"]
+        metadata_requirements: ["scene_reference", "note_date"]
+
+      - name: "Screening Notes"
+        description: "Viewing feedback"
+        extensions: [".docx", ".pdf"]
+
+      - name: "Editorial Notes"
+        description: "Cut feedback"
+        extensions: [".docx", ".pdf"]
+
+      - name: "Test Screening Data"
+        description: "Audience reaction analysis"
+        extensions: [".xlsx", ".pdf"]
+
+      - name: "Revision Notes"
+        description: "Change requests"
+        extensions: [".docx", ".pdf"]
+
+# Document lifecycle states
+states:
+  draft:
+    code: "DFT"
+    name: "Draft"
+    description: "Initial working version"
+    color: "#FFEB3B"
+    next_states: ["work_in_progress", "in_review", "rejected"]
+
+  work_in_progress:
+    code: "WIPP"
+    name: "Work In Progress"
+    description: "Actively being modified"
+    color: "#FF9800"
+    next_states: ["in_review", "draft", "on_hold"]
+
+  in_review:
+    code: "REV"
+    name: "In Review"
+    description: "Circulated for feedback"
+    color: "#FB8C00"
+    next_states: ["approved", "rejected", "draft"]
+    requires_approval: true
+
+  approved:
+    code: "APP"
+    name: "Approved"
+    description: "Officially accepted"
+    color: "#4CAF50"
+    next_states: ["final", "revised"]
+    locked: false
+
+  final:
+    code: "FIN"
+    name: "Final"
+    description: "Locked for production"
+    color: "#1976D2"
+    next_states: ["revised", "superseded"]
+    locked: true
+
+  revised:
+    code: "RVS"
+    name: "Revised"
+    description: "Updated after approval"
+    color: "#9C27B0"
+    next_states: ["in_review", "approved", "final"]
+
+  superseded:
+    code: "SUP"
+    name: "Superseded"
+    description: "Replaced by newer version"
+    color: "#9E9E9E"
+    next_states: ["archived"]
+    locked: true
+
+  on_hold:
+    code: "HLD"
+    name: "On Hold"
+    description: "Temporarily paused"
+    color: "#795548"
+    next_states: ["work_in_progress", "rejected"]
+
+  rejected:
+    code: "REJ"
+    name: "Rejected"
+    description: "Not approved for use"
+    color: "#F44336"
+    next_states: ["draft"]
+
+  archived:
+    code: "ARC"
+    name: "Archived"
+    description: "Historic reference only"
+    color: "#616161"
+    next_states: []
+    locked: true
+
+# Confidentiality levels (aligned with industry standards)
+confidentiality_levels:
+  public:
+    code: "PUB"
+    level: 0
+    name: "Public"
+    description: "Can be freely shared externally"
+    access: ["all"]
+
+  internal:
+    code: "INT"
+    level: 1
+    name: "Internal"
+    description: "For production team only"
+    access: ["all_crew"]
+
+  department_only:
+    code: "DEPT"
+    level: 2
+    name: "Department Only"
+    description: "Restricted to specific department"
+    access: ["department_members"]
+
+  heads_of_department:
+    code: "HOD"
+    level: 3
+    name: "Heads of Department"
+    description: "For departmental leadership"
+    access: ["department_heads", "producers"]
+
+  key_creative:
+    code: "KEY"
+    level: 4
+    name: "Key Creative"
+    description: "Limited to primary creative team"
+    access: ["director", "dp", "pd", "producers", "key_creatives"]
+
+  executive:
+    code: "EXE"
+    level: 5
+    name: "Executive"
+    description: "Business sensitive information"
+    access: ["producers", "executives"]
+
+  confidential:
+    code: "CON"
+    level: 6
+    name: "Confidential"
+    description: "Highly sensitive content"
+    access: ["director", "producers", "specified_individuals"]
+
+  restricted:
+    code: "RES"
+    level: 7
+    name: "Restricted"
+    description: "Legally protected information"
+    access: ["legal_team", "specified_individuals"]
+
+  nda_required:
+    code: "NDA"
+    level: 8
+    name: "NDA Required"
+    description: "Requires signed confidentiality agreement"
+    access: ["nda_signatories"]
+    requires_nda: true
+
+# Production phases (aligned with industry standards)
+production_phases:
+  development:
+    code: "DEV"
+    name: "Development"
+    order: 1
+    typical_duration_weeks: [12, 104]  # 3 months to 2 years
+    key_activities:
+      - "Concept development"
+      - "Script development"
+      - "Initial budgeting"
+      - "Financing"
+      - "Rights acquisition"
+      - "Package assembly"
+    typical_documents:
+      - "Script"
+      - "Treatment"
+      - "Budget"
+      - "Pitch Deck"
+
+  pre_production:
+    code: "PRE"
+    name: "Pre-Production"
+    order: 2
+    typical_duration_weeks: [4, 26]  # 1 month to 6 months
+    key_activities:
+      - "Casting"
+      - "Location scouting"
+      - "Design development"
+      - "Crew hiring"
+      - "Equipment rental"
+      - "Scheduling"
+      - "Rehearsals"
+    typical_documents:
+      - "Script Breakdown"
+      - "Production Schedule"
+      - "Lookbook"
+      - "Storyboard"
+      - "Call Sheet"
+
+  production:
+    code: "PRO"
+    name: "Production"
+    order: 3
+    typical_duration_weeks: [1, 26]  # 1 week to 6 months
+    key_activities:
+      - "Principal photography"
+      - "Second unit"
+      - "Daily reviews"
+      - "Production reporting"
+    typical_documents:
+      - "Call Sheet"
+      - "Production Report"
+      - "Camera Report"
+      - "Daily Brief"
+
+  wrap:
+    code: "WRP"
+    name: "Wrap"
+    order: 4
+    typical_duration_weeks: [1, 4]
+    key_activities:
+      - "Strike/teardown"
+      - "Equipment returns"
+      - "Data management"
+      - "Final payments"
+    typical_documents:
+      - "Wrap Report"
+      - "Equipment Return"
+      - "Final Timecards"
+
+  post_production:
+    code: "PST"
+    name: "Post-Production"
+    order: 5
+    typical_duration_weeks: [8, 52]  # 2 months to 1 year
+    key_activities:
+      - "Editing"
+      - "VFX"
+      - "Sound design"
+      - "Color grading"
+      - "Music"
+      - "Final mix"
+    typical_documents:
+      - "Editorial Notes"
+      - "VFX Shot List"
+      - "Color Notes"
+      - "Sound Design Notes"
+
+  delivery:
+    code: "DLV"
+    name: "Delivery"
+    order: 6
+    typical_duration_weeks: [2, 8]
+    key_activities:
+      - "Deliverables creation"
+      - "Quality control"
+      - "Format conversions"
+      - "Master creation"
+    typical_documents:
+      - "Delivery Specs"
+      - "QC Report"
+      - "Master Documentation"
+
+  marketing_distribution:
+    code: "MKT"
+    name: "Marketing & Distribution"
+    order: 7
+    typical_duration_weeks: [12, 104]
+    key_activities:
+      - "Marketing campaign"
+      - "Festival submissions"
+      - "Premiere"
+      - "Release"
+    typical_documents:
+      - "Marketing Plan"
+      - "Press Kit"
+      - "Trailer"
+      - "Poster"
+
+  archival:
+    code: "ARC"
+    name: "Archival"
+    order: 8
+    typical_duration_weeks: null  # Ongoing
+    key_activities:
+      - "Asset archiving"
+      - "Documentation storage"
+      - "Long-term preservation"
+    typical_documents:
+      - "Archive Manifest"
+      - "Storage Documentation"
+
+# File format specifications (aligned with industry standards)
+supported_formats:
+  documents:
+    - {ext: ".pdf", mime: "application/pdf", industry_standard: true}
+    - {ext: ".docx", mime: "application/vnd.openxmlformats-officedocument.wordprocessingml.document"}
+    - {ext: ".gdoc", type: "google_docs"}
+    - {ext: ".txt", mime: "text/plain"}
+    - {ext: ".md", mime: "text/markdown"}
+
+  spreadsheets:
+    - {ext: ".xlsx", mime: "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"}
+    - {ext: ".gsheet", type: "google_sheets"}
+    - {ext: ".csv", mime: "text/csv"}
+    - {ext: ".mmb", type: "movie_magic_budget"}
+    - {ext: ".mms", type: "movie_magic_schedule"}
+
+  images:
+    - {ext: ".jpg", mime: "image/jpeg"}
+    - {ext: ".png", mime: "image/png"}
+    - {ext: ".tiff", mime: "image/tiff", archival: true}
+    - {ext: ".dng", mime: "image/x-adobe-dng", camera_raw: true}
+    - {ext: ".psd", mime: "image/vnd.adobe.photoshop", layered: true}
+    - {ext: ".ai", mime: "application/postscript", vector: true}
+
+  video:
+    - {ext: ".mov", mime: "video/quicktime", industry_standard: true}
+    - {ext: ".mp4", mime: "video/mp4"}
+    - {ext: ".mxf", mime: "application/mxf", industry_standard: true, broadcast: true}
+    - {ext: ".r3d", type: "red_raw", camera_raw: true}
+    - {ext: ".braw", type: "blackmagic_raw", camera_raw: true}
+    - {ext: ".prores", codec: "apple_prores", industry_standard: true}
+
+  audio:
+    - {ext: ".wav", mime: "audio/wav", industry_standard: true}
+    - {ext: ".mp3", mime: "audio/mpeg"}
+    - {ext: ".aac", mime: "audio/aac"}
+    - {ext: ".flac", mime: "audio/flac", lossless: true}
+
+  design:
+    - {ext: ".fig", type: "figma"}
+    - {ext: ".sketch", type: "sketch"}
+    - {ext: ".indd", mime: "application/x-indesign"}
+    - {ext: ".dwg", mime: "image/vnd.dwg", cad: true}
+    - {ext: ".vwx", type: "vectorworks", cad: true}
+
+  scripts:
+    - {ext: ".fdx", type: "final_draft", industry_standard: true}
+    - {ext: ".fountain", type: "fountain", open_standard: true}
+    - {ext: ".celtx", type: "celtx"}
+
+# Validation rules for document metadata
+validation_rules:
+  required_always:
+    - "production"
+    - "document_id"
+    - "department"
+    - "creator"
+    - "creation_date"
+    - "version"
+    - "status"
+    - "document_type"
+
+  required_for_financial:
+    - "confidentiality"  # Must be at least "Executive"
+    - "approval_chain"
+
+  required_for_legal:
+    - "confidentiality"  # Must be at least "Restricted"
+    - "retention_period"
+
+  required_for_technical:
+    - "technical_metadata"
+
+  recommended:
+    - "certainty_level"
+    - "production_phase"
+    - "notes"
+    - "tags"
